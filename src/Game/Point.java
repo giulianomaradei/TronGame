@@ -1,11 +1,9 @@
 package Game;
 
 public abstract class Point {
-    private double x;
-    private double y;
+    private Coordinate coordinate;
 
-    private int i;
-    private int j;
-
-    public int size;
+    public Coordinate getCoordinate(){
+        return this.coordinate;
+    }
 }
