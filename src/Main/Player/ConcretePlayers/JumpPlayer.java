@@ -1,6 +1,6 @@
-package Game.Player.ConcretePlayers;
+package Main.Player.ConcretePlayers;
 
-import Game.Player.Player;
+import Main.Player.Player;
 
 public class JumpPlayer extends Player {
 

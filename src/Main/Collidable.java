@@ -1,6 +1,6 @@
-package Game;
+package Main;
 
-import Game.Player.Player;
+import Main.Player.Player;
 
 public interface Collidable {
     public void reaction (Player player);

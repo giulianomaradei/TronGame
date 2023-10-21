@@ -1,6 +1,6 @@
-package Game;
+package Main;
 
-public class Coordinate {
+abstract public class Point {
     private int x;
     private int y;
 
