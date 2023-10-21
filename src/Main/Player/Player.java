@@ -2,14 +2,25 @@ package Main.Player;
 
 import Main.Collidable;
 import Main.Game.Game;
-import Main.Point;
+import Main.GameObject;
 
-public abstract class Player extends Point implements Collidable {
+
+public abstract class Player extends GameObject {
+
+
+
 
     private double skillCooldown;
     private int vx;
     private int vy;
     private Trace[] traces;
+
+    public Player(String spriteUrl, int x, int y, int vx, int vy){
+        super(spriteUrl, x, y);
+        this.vx = vx;
+        this.vy = vy;
+        this.skillCooldown = skillCooldown;
+    }
 
     private void movement(){
 
