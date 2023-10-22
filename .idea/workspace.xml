@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +55,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -98,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695902063531</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas">
+      <option name="closed" value="true" />
+      <created>1697989985631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697989985631</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +120,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
+    <MESSAGE value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
   </component>
 </project>
