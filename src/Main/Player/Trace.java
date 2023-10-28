@@ -1,35 +1,57 @@
 package Main.Player;
 
+import Main.Game.Game;
 import Main.GameObject;
 import Main.Point;
+import Main.TraceableObject;
 
-public class Trace extends GameObject {
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
-    public Trace(String spriteUrl, int x, int y, int index, Trace previousTrace) {
+public class Trace extends TraceableObject {
+
+    public Trace(String spriteUrl, int x, int y, TraceableObject previousObject) {
         super(spriteUrl, x, y);
-        this.index = index;
-        this.previousTrace = previousTrace;
+        this.previousObject = previousObject;
     }
 
-    private int index;
-    private Trace previousTrace;
 
-    public int getIndex() {
-        return index;
+    private TraceableObject previousObject;
+    private TraceableObject nextObject = null;
+
+    public void setNextObject(TraceableObject nextObject){
+        this.nextObject = nextObject;
     }
 
-    public void movement() {
-        int x = previousTrace.getX();
-        int y = previousTrace.getY();
+    public void move() {
+        Point previousObjectLastPosition = previousObject.getLastPosition();
+        int x = previousObjectLastPosition.getX();
+        int y = previousObjectLastPosition.getY();
 
-        this.setXY(x, y);
+        this.setLastPosition(this.getX(), this.getY());
 
-        previousTrace.movement();
+        this.setX(x);
+        this.setY(y);
+
+        if(nextObject != null){
+            ((Trace) nextObject).move();
+        }
     }
 
 
     @Override
     public void reaction(Player player) {
 
+    }
+
+    @Override
+    public void render(Graphics g) {
+
+        BufferedImage playerSprite = this.getSprite();
+
+        int x = this.getX();
+        int y = this.getY();
+
+        g.drawImage(playerSprite, x, y, null);
     }
 }

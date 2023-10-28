@@ -32,7 +32,9 @@ public class SceneManager {
         }
         currentScene = scene;
         gameFrame.add(currentScene);
+        gameFrame.pack();
         gameFrame.revalidate();
         gameFrame.repaint();
+        gameFrame.requestFocus();
     }
 }

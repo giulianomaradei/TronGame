@@ -7,12 +7,13 @@ import Main.Player.Player;
 import javax.swing.*;
 
 public class Game {
-    static public Player player1 = new DashPlayer("resources/Player.png", 0, 0, 1, 0);
-    static public Player player2 = new DashPlayer("resources/Player.png", 10, 10, 1, 0);;
+    static public Player player1 = new DashPlayer("resources/Moto1.png", 0, 0);
+    static public Player player2 = new DashPlayer("resources/Player.png", 0, 5);;
 
     static private GameObject[][] grid;
     static public int cellSize = 20;
-    static public int boardSize = 10;
+    static public int gridWidth = 800;
+    static public int gridHeight = 600;
 
     public Game(){
         SwingUtilities.invokeLater(() -> {
@@ -25,5 +26,6 @@ public class Game {
     public void render(){
 
     }
+
 
 }

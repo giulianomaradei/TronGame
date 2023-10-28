@@ -22,29 +22,72 @@ public class GameScene extends Scene {
         super(sceneManager);
         this.gameFrame = gameFrame;
 
-        int delay = 5000;
-        int interval = 1000;
+
+        setStepActions();
+        setInputListeners();
+
+    }
+
+    private void setInputListeners() {
+        gameFrame.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                System.out.println("Teste");
+                switch (evt.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_UP:
+                        Game.player1.moveUp();
+                        System.out.println("Teste2");
+                        break;
+                    case java.awt.event.KeyEvent.VK_DOWN:
+                        Game.player1.moveDown();
+                        break;
+                    case java.awt.event.KeyEvent.VK_LEFT:
+                        Game.player1.moveLeft();
+                        break;
+                    case java.awt.event.KeyEvent.VK_RIGHT:
+                        Game.player1.moveRight();
+                        break;
+                    case java.awt.event.KeyEvent.VK_W:
+                        Game.player2.moveUp();
+                        break;
+                    case java.awt.event.KeyEvent.VK_S:
+                        Game.player2.moveDown();
+                        break;
+                    case java.awt.event.KeyEvent.VK_A:
+                        Game.player2.moveLeft();
+                        break;
+                    case java.awt.event.KeyEvent.VK_D:
+                        Game.player2.moveRight();
+                        break;
+                }
+            }
+        });
+    }
+
+    private void setStepActions(){
+        int delay = 0;
+        int interval = 50;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                render();
+                gameFrame.repaint();
+                gameFrame.revalidate();
             }
         }, delay, interval);
-    }
+    };
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Chama o método da classe pai
 
         int GameFrameWidth = gameFrame.getWidth();
-        for(int i=Game.cellSize;i<GameFrameWidth;i+=Game.cellSize){
-            g.drawLine(i,0, i, GameFrameWidth);
-            g.drawLine(0,i, GameFrameWidth, i);
+        //for(int i=Game.cellSize;i<GameFrameWidth;i+=Game.cellSize){
+            //g.drawLine(i,0, i, GameFrameWidth);
+            //g.drawLine(0,i, GameFrameWidth, i);
 
-        }
+        //}
 
-        renderPlayer(Game.player1, g);
-        renderPlayer(Game.player2, g);
+        Game.player1.render(g);
+        Game.player2.render(g);
     }
 
     public void render(){
@@ -59,11 +102,5 @@ public class GameScene extends Scene {
 
     }
 
-    private void renderPlayer(Player player, Graphics g){
-        int x = player.getX() * Game.cellSize;
-        int y = player.getY() * Game.cellSize;
-        BufferedImage playerSprite = player.getSprite();
 
-        g.drawImage(playerSprite, x, y, null);
-    }
 }

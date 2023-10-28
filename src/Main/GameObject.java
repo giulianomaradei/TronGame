@@ -5,13 +5,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-abstract public class GameObject extends Point implements Collidable {
+abstract public class GameObject extends Point implements Collidable, Renderable {
 
     private String spriteUrl;
     private BufferedImage sprite;
 
     public GameObject(String spriteUrl, int x, int y){
-        setXY(x, y);
+        super(x, y);
+        setX(x);
+        setY(y);
 
         try {
             sprite = ImageIO.read(new File(spriteUrl));
