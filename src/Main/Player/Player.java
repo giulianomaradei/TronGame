@@ -1,8 +1,6 @@
 package Main.Player;
 
-import Main.Collidable;
 import Main.Game.Game;
-import Main.GameObject;
 import Main.TraceableObject;
 
 import java.awt.*;
@@ -13,8 +11,11 @@ import java.awt.image.BufferedImage;
 public abstract class Player extends TraceableObject {
 
     private double skillCooldown;
-    private int vx = 0;
-    private int vy = -1;
+    private int currentHorizontalSpeed = 0;
+    private int currentVerticalSpeed = -1;
+
+    private int nextHorizontalSpeed = 0;
+    private int nextVerticalSpeed = -1;
     private Trace[] traces;
 
     public Player(String spriteUrl, int x, int y){
@@ -28,7 +29,11 @@ public abstract class Player extends TraceableObject {
         TraceableObject nextObject = null;
 
         for (int i = 0; i < traces.length; i++) {
-            traces[i] = new Trace("resources/Trace.png", this.getX(), this.getY(), previousObject);
+            String traceUrl = "resources/straightTrace.png";
+            if(i == traces.length-1){
+                traceUrl = "resources/lastTrace.png";
+            }
+            traces[i] = new Trace(traceUrl, this.getX(), this.getY(), previousObject, i);
             previousObject = traces[i];
 
             if(i > 0){
@@ -38,36 +43,43 @@ public abstract class Player extends TraceableObject {
     }
 
     public void moveUp(){
-        if(this.vy == 1){
+        if(this.currentVerticalSpeed == 1 || this.currentVerticalSpeed == -1){
             return;
         }
 
-        this.vx = 0;
-        this.vy = -1;
+        this.setAngle(90);
+        this.nextHorizontalSpeed = 0;
+        this.nextVerticalSpeed = -1;
     }
 
     public void moveDown(){
-        if(this.vy == -1){
+        if(this.currentVerticalSpeed == -1 || this.currentVerticalSpeed == 1){
             return;
         }
-        this.vx = 0;
-        this.vy = 1;
+
+        this.setAngle(270);
+        this.nextHorizontalSpeed = 0;
+        this.nextVerticalSpeed = 1;
     }
 
     public void moveLeft(){
-        if(this.vx == 1){
+        if(this.currentHorizontalSpeed == 1 || this.currentHorizontalSpeed == -1){
             return;
         }
-        this.vx = -1;
-        this.vy = 0;
+
+        this.setAngle(180);
+        this.nextHorizontalSpeed = -1;
+        this.nextVerticalSpeed = 0;
     }
 
     public void moveRight(){
-        if(this.vx == -1){
+        if(this.currentHorizontalSpeed == -1 || this.currentHorizontalSpeed == 1){
             return;
         }
-        this.vx = 1;
-        this.vy = 0;
+
+        this.setAngle(0);
+        this.nextHorizontalSpeed = 1;
+        this.nextVerticalSpeed = 0;
     }
 
     public void move(){
@@ -77,8 +89,11 @@ public abstract class Player extends TraceableObject {
 
         this.setLastPosition(x, y);
 
-        this.setX(x + (vx * Game.cellSize));
-        this.setY(y + (vy * Game.cellSize));
+        this.setX(x + (nextHorizontalSpeed * Game.cellSize));
+        this.setY(y + (nextVerticalSpeed * Game.cellSize));
+
+        this.currentHorizontalSpeed = nextHorizontalSpeed;
+        this.currentVerticalSpeed = nextVerticalSpeed;
 
         checkCollisionWall();
     }
@@ -88,7 +103,7 @@ public abstract class Player extends TraceableObject {
     }
 
     public void renderTraces(Graphics g){
-        for (int i = 0; i < traces.length; i++) {
+        for (int i = traces.length-1; i >= 0; i--) {
             traces[i].render(g);
         }
     }
@@ -123,8 +138,8 @@ public abstract class Player extends TraceableObject {
         bottomY = y + height;
 
         if (x < 0 || rightX > Game.gridWidth || y < 0 || bottomY > Game.gridHeight) {
-            vx = 0;
-            vy = 0;
+            currentHorizontalSpeed = 0;
+            currentVerticalSpeed = 0;
         }
     }
 
@@ -141,7 +156,7 @@ public abstract class Player extends TraceableObject {
         int x = this.getX();
         int y = this.getY();
 
-        double rotationAngle = Math.toDegrees(Math.atan2(vy, vx));
+        double rotationAngle = Math.toDegrees(Math.atan2(currentVerticalSpeed, currentHorizontalSpeed));
 
         // Criar um novo BufferedImage para a imagem girada
         BufferedImage rotatedImage = new BufferedImage(playerSprite.getWidth(), playerSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);

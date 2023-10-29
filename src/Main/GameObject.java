@@ -33,4 +33,8 @@ abstract public class GameObject extends Point implements Collidable, Renderable
     public BufferedImage getSprite() {
         return sprite;
     }
+
+    public void setSprite(BufferedImage sprite) {
+        this.sprite = sprite;
+    }
 }

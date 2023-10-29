@@ -65,7 +65,7 @@ public class GameScene extends Scene {
 
     private void setStepActions(){
         int delay = 0;
-        int interval = 50;
+        int interval = 100;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
