@@ -19,7 +19,7 @@ public class SceneManager {
     }
 
     public void showGameplay() {
-        changeScene(new GameScene(this));
+        changeScene(new GameScene(this, gameFrame));
     }
 
     public void showEndScreen() {
@@ -32,7 +32,9 @@ public class SceneManager {
         }
         currentScene = scene;
         gameFrame.add(currentScene);
+        gameFrame.pack();
         gameFrame.revalidate();
         gameFrame.repaint();
+        gameFrame.requestFocus();
     }
 }
