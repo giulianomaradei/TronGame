@@ -1,5 +1,6 @@
 package Main.Game.Panels;
 
+import Main.Game.GameFrame;
 import Main.Game.SceneManager;
 
 import javax.swing.*;
@@ -21,7 +22,6 @@ public class MenuScene extends Scene {
         add(startButton, BorderLayout.SOUTH);
 
         startButton.addActionListener(e -> {
-            // Adicione aqui as ações que deseja executar quando o botão for clicado.
             this.sceneManager.showGameplay();
         });
     }
