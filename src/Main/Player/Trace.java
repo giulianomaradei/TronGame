@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Trace extends TraceableObject {
 
-    public Trace(String spriteUrl, int x, int y, TraceableObject previousObject, int index) {
+    public Trace(String spriteUrl, int x, int y, TraceableObject nextObject, int index) {
         super(spriteUrl, x, y);
 
         try {
@@ -22,33 +22,33 @@ public class Trace extends TraceableObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.previousObject = previousObject;
+        this.nextObject = nextObject;
         this.index = index;
     }
 
 
-    private TraceableObject previousObject;
-    private TraceableObject nextObject = null;
+    private TraceableObject previousObject = null;
+    private TraceableObject nextObject;
     private int index = 0;
 
     BufferedImage curvedSprite = null;
 
-    public void setNextObject(TraceableObject nextObject){
-        this.nextObject = nextObject;
+    public void setPreviousObject(TraceableObject previousObject){
+        this.previousObject = previousObject;
     }
 
     public void move() {
-        Point previousObjectLastPosition = previousObject.getLastPosition();
-        int x = previousObjectLastPosition.getX();
-        int y = previousObjectLastPosition.getY();
+        Point nextObjectLastPosition = nextObject.getLastPosition();
+        int x = nextObjectLastPosition.getX();
+        int y = nextObjectLastPosition.getY();
 
         this.setLastPosition(this.getX(), this.getY());
 
         this.setX(x);
         this.setY(y);
 
-        if(nextObject != null){
-            ((Trace) nextObject).move();
+        if(previousObject != null){
+            ((Trace) previousObject).move();
         }
     }
 
@@ -66,44 +66,42 @@ public class Trace extends TraceableObject {
         int x = this.getX();
         int y = this.getY();
 
+        int nextObjectLastAngle = nextObject.getLastAngle(); // Ultimo angulo do proximo objeto (objeto para qual vamos para a antiga posição dele (trace da frente));
+        int nextObjectCurrentAngle = nextObject.getCurrentAngle();
+        //int currentAngle = this.getCurrentAngle();
 
-        int previousAngle = previousObject.getAngle();
-        int currentAngle = this.getAngle();
 
-        this.setAngle(previousAngle);
 
-        boolean isTurningLeft = false;
-
-        if(previousAngle != currentAngle){
+        if(nextObjectLastAngle != nextObjectCurrentAngle){
             traceSprite = curvedSprite;
-            if ((currentAngle == 0 && previousAngle == 90) || (currentAngle == 90 && previousAngle == 180) ||
-                    (currentAngle == 180 && previousAngle == 270) || (currentAngle == 270 && previousAngle == 0)) {
+            if ((nextObjectLastAngle == 0 && nextObjectCurrentAngle == 90) || (nextObjectLastAngle == 90 && nextObjectCurrentAngle == 180) ||
+                    (nextObjectLastAngle == 180 && nextObjectCurrentAngle == 270) || (nextObjectLastAngle == 270 && nextObjectCurrentAngle == 0)) {
                 // O personagem está virando para a esquerda, portanto, espelhe a sprite horizontalmente.
-                isTurningLeft = true;
+
+                if(nextObjectLastAngle  == 180 || nextObjectLastAngle == 0) {
+                    traceSprite = flipSpriteVertically(traceSprite);
+                }else{
+                    traceSprite = flipSpriteHorizontally(traceSprite);
+                }
             }
-        }else if (currentAngle % 180 != 0) {
-            // O personagem está na vertical, então espelhe a sprite verticalmente.
-            traceSprite = flipSpriteVertically(traceSprite);
         }
 
-        if(this.nextObject == null){
+        this.setCurrentAngle(nextObjectLastAngle);
+
+
+        if(this.previousObject == null){ // Se for o ultimo trace (ponta)
             // se ele estiver na vertical inverte o angulo
-            if(previousAngle == 90 || previousAngle == 270){
-                previousAngle = Math.abs(previousAngle + 180);
+            if(nextObjectLastAngle == 90 || nextObjectLastAngle == 270){
+                nextObjectLastAngle = Math.abs(nextObjectLastAngle + 180); // invertemos o angulo afinal o ultimo trace sendo aponta para o lado inverso de onde o corpo está andando
             }
         }
-
-        if (isTurningLeft) {
-            traceSprite = flipSpriteHorizontally(traceSprite);
-        }
-
 
         // Criar um novo BufferedImage para a imagem girada
         BufferedImage rotatedImage = new BufferedImage(traceSprite .getWidth(), traceSprite .getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = rotatedImage.createGraphics();
 
         // Definir a transformação de rotação com base no ângulo calculado
-        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(previousAngle), traceSprite .getWidth() / 2, traceSprite .getHeight() / 2);
+        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(nextObjectLastAngle), traceSprite .getWidth() / 2, traceSprite .getHeight() / 2);
         g2d.setTransform(at);
 
         // Desenhar a imagem no novo BufferedImage girado

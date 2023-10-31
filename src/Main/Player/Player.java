@@ -16,6 +16,8 @@ public abstract class Player extends TraceableObject {
 
     private int nextHorizontalSpeed = 0;
     private int nextVerticalSpeed = -1;
+
+    private int nextAngle = 0;
     private Trace[] traces;
 
     public Player(String spriteUrl, int x, int y){
@@ -24,20 +26,20 @@ public abstract class Player extends TraceableObject {
     }
 
     public void setTraces(){
-        this.traces = new Trace[10];
-        TraceableObject previousObject = this;
-        TraceableObject nextObject = null;
+        this.traces = new Trace[20];
+        TraceableObject nextObject = this;
+        TraceableObject previousObject = null;
 
         for (int i = 0; i < traces.length; i++) {
             String traceUrl = "resources/straightTrace.png";
             if(i == traces.length-1){
                 traceUrl = "resources/lastTrace.png";
             }
-            traces[i] = new Trace(traceUrl, this.getX(), this.getY(), previousObject, i);
-            previousObject = traces[i];
+            traces[i] = new Trace(traceUrl, this.getX(), this.getY(), nextObject, i);
+            nextObject = traces[i];
 
             if(i > 0){
-                traces[i-1].setNextObject(traces[i]);
+                traces[i-1].setPreviousObject(traces[i]);
             }
         }
     }
@@ -47,7 +49,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.setAngle(90);
+        this.nextAngle = 90;
         this.nextHorizontalSpeed = 0;
         this.nextVerticalSpeed = -1;
     }
@@ -57,7 +59,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.setAngle(270);
+        this.nextAngle = 270;
         this.nextHorizontalSpeed = 0;
         this.nextVerticalSpeed = 1;
     }
@@ -67,7 +69,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.setAngle(180);
+        this.nextAngle = 180;
         this.nextHorizontalSpeed = -1;
         this.nextVerticalSpeed = 0;
     }
@@ -77,7 +79,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.setAngle(0);
+        this.nextAngle = 0;
         this.nextHorizontalSpeed = 1;
         this.nextVerticalSpeed = 0;
     }
@@ -94,6 +96,7 @@ public abstract class Player extends TraceableObject {
 
         this.currentHorizontalSpeed = nextHorizontalSpeed;
         this.currentVerticalSpeed = nextVerticalSpeed;
+        this.setCurrentAngle(this.nextAngle);
 
         checkCollisionWall();
     }
@@ -103,7 +106,7 @@ public abstract class Player extends TraceableObject {
     }
 
     public void renderTraces(Graphics g){
-        for (int i = traces.length-1; i >= 0; i--) {
+        for (int i = 0; i < traces.length; i++) {
             traces[i].render(g);
         }
     }
@@ -156,7 +159,7 @@ public abstract class Player extends TraceableObject {
         int x = this.getX();
         int y = this.getY();
 
-        double rotationAngle = Math.toDegrees(Math.atan2(currentVerticalSpeed, currentHorizontalSpeed));
+        double rotationAngle = this.getCurrentAngle();
 
         // Criar um novo BufferedImage para a imagem girada
         BufferedImage rotatedImage = new BufferedImage(playerSprite.getWidth(), playerSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);

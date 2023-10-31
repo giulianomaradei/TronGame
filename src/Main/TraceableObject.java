@@ -8,7 +8,7 @@ abstract public class TraceableObject extends GameObject{
     }
 
     private Point lastPosition;
-    private int angle = 0;
+    private int lastAngle = 0, currentAngle = 0;
 
     public void setLastPosition(int x, int y){
         this.lastPosition.setX(x);
@@ -19,11 +19,16 @@ abstract public class TraceableObject extends GameObject{
         return this.lastPosition;
     }
 
-    public void setAngle(int angle){
-        this.angle = angle;
+    public int getLastAngle(){
+        return this.lastAngle;
     }
 
-    public int getAngle(){
-        return this.angle;
+    public int getCurrentAngle(){
+        return this.currentAngle;
+    }
+
+    public void setCurrentAngle(int angle){
+        this.lastAngle = this.currentAngle;
+        this.currentAngle = angle;
     }
 }
