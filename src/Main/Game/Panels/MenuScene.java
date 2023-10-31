@@ -9,11 +9,8 @@ import java.awt.*;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 
 import static java.awt.Color.black;
-import static javax.sound.sampled.AudioSystem.getAudioInputStream;
-import static javax.sound.sampled.AudioSystem.getClip;
 
 public class MenuScene extends Scene {
 
@@ -22,12 +19,12 @@ public class MenuScene extends Scene {
         menuBackground();
         startButton();
         SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
-
     }
 
     public void menuBackground(){
         setBackground(black);
         try {
+
             BufferedImage backgroundImg = null;
             backgroundImg = ImageIO.read(new File("src/Res/menu_background.jpg"));
             ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
@@ -56,13 +53,12 @@ public class MenuScene extends Scene {
             startButton.setContentAreaFilled(false);
             add(startButton, BorderLayout.SOUTH);
 
-
             add(startButton);
 
             startButton.addActionListener(e -> {
-                // Adicione aqui as ações que deseja executar quando o botão for clicado.
                 this.sceneManager.showGameplay();
                 SoundHandler.StopMusic();
+                SoundHandler.RunMusic("src/Res/EndOfLine.wav");
             });
 
         }
@@ -73,13 +69,13 @@ public class MenuScene extends Scene {
 
 
     public static class SoundHandler{
+        private static Clip clip;
         public static void RunMusic(String path){
             try {
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
-                Clip clip = AudioSystem.getClip();
-                if (clip.isRunning()) clip.stop();
+                clip = AudioSystem.getClip();
                 clip.open(audio);
-                clip.loop(0);
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
             } catch (UnsupportedAudioFileException e) {
                 throw new RuntimeException(e);
             } catch (IOException e){
@@ -89,13 +85,7 @@ public class MenuScene extends Scene {
             }
         }
         public static void StopMusic(){
-            Clip clip = null;
-            try {
-                clip = AudioSystem.getClip();
-            } catch (LineUnavailableException e) {
-                throw new RuntimeException(e);
-            }
-            if (clip.isRunning()) clip.stop();
+            clip.stop();
         }
     }
 

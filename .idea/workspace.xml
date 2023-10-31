@@ -10,11 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/src/Res/AdagioForTRON.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Res/EndOfLine.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu_background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/Res/menu_background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/play_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Res/play_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +108,7 @@
       <workItem from="1698406982116" duration="7763000" />
       <workItem from="1698616170051" duration="13000" />
       <workItem from="1698670762082" duration="4237000" />
-      <workItem from="1698746938046" duration="5262000" />
+      <workItem from="1698746938046" duration="8265000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
