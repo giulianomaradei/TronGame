@@ -23,8 +23,6 @@ public class GameScene extends Scene {
 
         g.setColor(Color.RED);
         g.drawString("Olá, Mundo!", 150, 200);
-
-
     }
 
     public void render(){
