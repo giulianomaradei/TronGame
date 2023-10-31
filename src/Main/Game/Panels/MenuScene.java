@@ -1,5 +1,6 @@
 package Main.Game.Panels;
 
+import Main.Game.GameFrame;
 import Main.Game.SceneManager;
 
 import javax.imageio.ImageIO;
@@ -24,9 +25,8 @@ public class MenuScene extends Scene {
     public void menuBackground(){
         setBackground(black);
         try {
-
             BufferedImage backgroundImg = null;
-            backgroundImg = ImageIO.read(new File("src/Res/menu_background.jpg"));
+            backgroundImg = ImageIO.read(new File("src/Res/menu_background.png" ));
             ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
             JLabel backgroundMenu = new JLabel(menuBackgroundImg);
             backgroundMenu.setIcon(menuBackgroundImg);
@@ -39,9 +39,8 @@ public class MenuScene extends Scene {
     }
 
     private void startButton(){
-        BufferedImage buttonIcon = null;
         try {
-            buttonIcon = ImageIO.read(new File("src/Res/play_button.png"));
+            BufferedImage buttonIcon = ImageIO.read(new File("src/Res/play_button.png"));
             int newWidth = 180; // Coloco a largura que eu quero da imagem no botão
             int newHeight = 85;  //Coloco altura
             Image scaledImage = buttonIcon.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH); //Modifico a escala do botão
@@ -65,6 +64,10 @@ public class MenuScene extends Scene {
         catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void exitButton(){
+
     }
 
 
