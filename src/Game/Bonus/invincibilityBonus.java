@@ -2,9 +2,6 @@ package Game.Bonus;
 
 import Main.Player.Player;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 public class invincibilityBonus extends Bonus{
 
     private float invincibilityTime;
@@ -16,6 +13,8 @@ public class invincibilityBonus extends Bonus{
 
     @Override
     public void reaction(Player player) {
-        //player.improveSpeed(invincibilityTime);
+        if(collisionDetected(player)){
+            System.out.println("Colide");
+        }
     }
 }

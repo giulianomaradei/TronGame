@@ -1,5 +1,7 @@
 package Main;
 
+import Main.Player.Player;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -43,5 +45,10 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         int x = this.getX();
         int y = this.getY();
         g.drawImage(sprite, x, y, null);
+    }
+
+    @Override
+    public boolean collisionDetected(GameObject other) {
+        return (other.getX() == this.getX() && other.getY() == this.getY());
     }
 }

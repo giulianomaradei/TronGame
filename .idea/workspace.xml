@@ -9,21 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/resources/Bonus1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/Bonus2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="Bonus generator ja esta funcionando, foram também criadas as classes de bonus. &#10;Em game object agora contém um método Render que recebe um graphics.&#10;Foi adicionada as sprites bonus1 e bonus2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/SpeedBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/TrailBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/TrailBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Bonus/invincibilityBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/invincibilityBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Collidable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695901950468</updated>
-      <workItem from="1698773367121" duration="2063000" />
+      <workItem from="1698773367121" duration="3536000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
@@ -116,7 +105,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695902063531</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Bonus generator ja esta funcionando, foram também criadas as classes de bonus. &#10;Em game object agora contém um método Render que recebe um graphics.&#10;Foi adicionada as sprites bonus1 e bonus2">
+      <option name="closed" value="true" />
+      <created>1698775782951</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698775782951</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +134,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first" />
     <MESSAGE value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
+    <MESSAGE value="Bonus generator ja esta funcionando, foram também criadas as classes de bonus. &#10;Em game object agora contém um método Render que recebe um graphics.&#10;Foi adicionada as sprites bonus1 e bonus2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bonus generator ja esta funcionando, foram também criadas as classes de bonus. &#10;Em game object agora contém um método Render que recebe um graphics.&#10;Foi adicionada as sprites bonus1 e bonus2" />
   </component>
 </project>
