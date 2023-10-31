@@ -1,6 +1,7 @@
 package Main;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -36,5 +37,11 @@ abstract public class GameObject extends Point implements Collidable, Renderable
 
     public void setSprite(BufferedImage sprite) {
         this.sprite = sprite;
+    }
+
+    public void render(Graphics g){
+        int x = this.getX();
+        int y = this.getY();
+        g.drawImage(sprite, x, y, null);
     }
 }

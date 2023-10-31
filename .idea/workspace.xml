@@ -5,12 +5,26 @@
       <artifact name="Tron:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/resources/Bonus1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Bonus2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Trace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/TraceableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/TraceableObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/SpeedBonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/TrailBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/TrailBonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/invincibilityBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/invincibilityBonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +52,31 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2W1ZGGaSaoROfKZtYJzAXYRy5P5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/giulianoubunto/IdeaProjects/TronGame&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -85,6 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695901950468</updated>
+      <workItem from="1698773367121" duration="2063000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
@@ -95,6 +118,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -108,23 +134,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Comecando classe bonus e gerador bonus&#10;- funcoes auxiliares feitas" />
   </component>
 </project>

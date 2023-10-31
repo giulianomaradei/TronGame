@@ -1,5 +1,6 @@
 package Main.Game;
 
+import Game.Bonus.BonusGenerator;
 import Main.GameObject;
 import Main.Player.ConcretePlayers.DashPlayer;
 import Main.Player.Player;
@@ -14,6 +15,7 @@ public class Game {
     static public int cellSize = 20;
     static public int gridWidth = 800;
     static public int gridHeight = 600;
+    static public BonusGenerator bonusGenerator = new BonusGenerator(gridWidth, gridHeight, cellSize);
 
     public Game(){
         SwingUtilities.invokeLater(() -> {
@@ -22,10 +24,7 @@ public class Game {
         });
     }
 
-
     public void render(){
 
     }
-
-
 }
