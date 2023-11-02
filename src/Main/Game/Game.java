@@ -1,5 +1,6 @@
 package Main.Game;
 
+import Main.Game.Bonus.BonusGenerator;
 import Main.GameObject;
 import Main.Player.ConcretePlayers.DashPlayer;
 import Main.Player.Player;
@@ -14,11 +15,14 @@ public class Game {
     static public Player player1;
     static public Player player2;
 
+    static public BonusGenerator bonusGenerator;
+
     public Game(){
 
         grid = new GameObject[gridWidth / cellSize][gridHeight / cellSize];
         player1 = new DashPlayer("resources/Moto1.png", 400, 400);
-        player2 = new DashPlayer("resources/Player.png", 300, 300);
+        player2 = new DashPlayer("resources/Moto1.png", 300, 300);
+        bonusGenerator = new BonusGenerator();
 
         SwingUtilities.invokeLater(() -> {
             GameFrame frame = new GameFrame();

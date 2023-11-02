@@ -57,7 +57,8 @@ public class Trace extends TraceableObject {
         this.setX(new_x);
         this.setY(new_y);
 
-        this.updatePositionInGrid(x, y , new_x, new_y);
+        this.setPositionInGrid(new_x, new_y);
+        this.removePositionInGrid(x, y);
 
         if(previousObject != null){
             ((Trace) previousObject).move();

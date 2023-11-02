@@ -85,7 +85,8 @@ public abstract class Player extends TraceableObject {
 
         checkCollision(new_x, new_y);
 
-        this.updatePositionInGrid(x, y, new_x, new_y);
+        this.setPositionInGrid(new_x, new_y);
+        this.removePositionInGrid(x, y);
 
         this.currentHorizontalSpeed = nextHorizontalSpeed;
         this.currentVerticalSpeed = nextVerticalSpeed;
@@ -101,7 +102,6 @@ public abstract class Player extends TraceableObject {
     private void addTrace() {
         TraceableObject nextObject = traces.size() == 0 ? this : traces.getLast();
 
-        String traceUrl = "resources/straightTrace.png";
         String lastTraceUrl = "resources/lastTrace.png";
 
         Point lastPosition = nextObject.getLastPosition();

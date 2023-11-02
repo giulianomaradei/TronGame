@@ -38,13 +38,9 @@ public class BonusGenerator{
     }
 
     private void bonusesInit(){
-        trailBonus = new TrailBonus("resources/TrailBonus.png", -100, -100);
-        speedBonus = new SpeedBonus("resources/SpeedBonus.png", -100, -100 );
-        invincibilityBonus = new InvincibilityBonus("resources/TrailBonus.png", -100, -100);
-    }
-
-    public Bonus getActiveBonus() {
-        return activeBonus;
+        trailBonus = new TrailBonus("resources/TrailBonus.png", 0, 0);
+        speedBonus = new SpeedBonus("resources/SpeedBonus.png", 0, 0 );
+        invincibilityBonus = new InvincibilityBonus("resources/TrailBonus.png", 0, 0);
     }
 
     private void setBonusRandomPosition(Bonus bonus){
@@ -54,7 +50,7 @@ public class BonusGenerator{
         int x = i*Game.cellSize;
         int y = j*Game.cellSize;
 
-        // IMPLEMENTAR GRID SET
+        bonus.setPositionInGrid(x, y);
 
         bonus.setX(x);
         bonus.setY(y);
@@ -80,6 +76,13 @@ public class BonusGenerator{
     public void renderActiveBonus(Graphics g){
         if(activeBonus != null) {
             activeBonus.render(g);
+        }
+    }
+
+    public void activeBonusDeactivation(){
+        if(activeBonus != null){
+            activeBonus = null;
+            scheduleBonusSpawner();
         }
     }
 }

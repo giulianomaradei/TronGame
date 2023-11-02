@@ -11,8 +11,6 @@ public class InvincibilityBonus extends TimedBonus {
 
     @Override
     public void reaction(Player player) {
-        if(collisionDetected(player)){
-            System.out.println("Colide");
-        }
+        super.reaction(player);
     }
 }

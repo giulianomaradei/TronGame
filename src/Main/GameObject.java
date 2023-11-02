@@ -3,6 +3,7 @@ package Main;
 import Main.Game.Game;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +40,8 @@ abstract public class GameObject extends Point implements Collidable, Renderable
     }
 
     public void updatePositionInGrid(int x, int y, int new_x, int new_y){
-        int i = x / Game.cellSize;
+
+        int  i= x / Game.cellSize;
         int j = y / Game.cellSize;
 
         int ii = new_x / Game.cellSize;
@@ -54,5 +56,19 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         int j = y / Game.cellSize;
 
         Game.grid[i][j] = this;
+    }
+
+    public void removePositionInGrid(int x, int y){
+        int i = x / Game.cellSize;
+        int j = y / Game.cellSize;
+
+        Game.grid[i][j] = null;
+    }
+
+    public void render(Graphics g){
+        int x = this.getX();
+        int y = this.getY();
+        BufferedImage sprite = this.getSprite();
+        g.drawImage(sprite, x, y, null);
     }
 }
