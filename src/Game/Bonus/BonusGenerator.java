@@ -1,5 +1,7 @@
 package Game.Bonus;
 
+import Main.Player.Player;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -31,6 +33,10 @@ public class BonusGenerator{
 
     public void setRespawnCooldown(float respawnCooldown) {
         this.respawnCooldown = respawnCooldown;
+    }
+
+    public Bonus getActiveBonus() {
+        return activeBonus;
     }
 
     public void setBonusRandomPosition(Bonus bonus){
