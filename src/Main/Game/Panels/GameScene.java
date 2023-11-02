@@ -3,14 +3,8 @@ package Main.Game.Panels;
 import Main.Game.Game;
 import Main.Game.GameFrame;
 import Main.Game.SceneManager;
-import Main.Player.Player;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,7 +19,6 @@ public class GameScene extends Scene {
 
         setStepActions();
         setInputListeners();
-
     }
 
     private void setInputListeners() {
@@ -83,7 +76,7 @@ public class GameScene extends Scene {
             //g.drawLine(0,i, GameFrameWidth, i);
 
         //}
-
+        Game.bonusGenerator.renderActiveBonus(g);
         Game.player1.render(g);
         Game.player2.render(g);
     }
