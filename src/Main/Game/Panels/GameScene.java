@@ -31,11 +31,9 @@ public class GameScene extends Scene {
     private void setInputListeners() {
         gameFrame.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                System.out.println("Teste");
                 switch (evt.getKeyCode()) {
                     case java.awt.event.KeyEvent.VK_UP:
                         Game.player1.moveUp();
-                        System.out.println("Teste2");
                         break;
                     case java.awt.event.KeyEvent.VK_DOWN:
                         Game.player1.moveDown();

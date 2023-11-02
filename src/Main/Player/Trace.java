@@ -1,29 +1,34 @@
 package Main.Player;
 
 import Main.Game.Game;
-import Main.GameObject;
 import Main.Point;
 import Main.TraceableObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class Trace extends TraceableObject {
 
-    public Trace(String spriteUrl, int x, int y, TraceableObject nextObject, int index) {
+    private Player player;
+
+    public Trace(String spriteUrl, int x, int y, TraceableObject nextObject, int index, Player player){
         super(spriteUrl, x, y);
 
         try {
             this.curvedSprite = ImageIO.read(new File("resources/curvedTrace.png"));
+            this.straightSprite = ImageIO.read(new File("resources/straightTrace.png"));
+            this.lastSprite = ImageIO.read(new File("resources/lastTrace.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         this.nextObject = nextObject;
         this.index = index;
+        this.player = player;
     }
 
 
@@ -32,6 +37,8 @@ public class Trace extends TraceableObject {
     private int index = 0;
 
     BufferedImage curvedSprite = null;
+    BufferedImage straightSprite = null;
+    BufferedImage lastSprite = null;
 
     public void setPreviousObject(TraceableObject previousObject){
         this.previousObject = previousObject;
@@ -39,13 +46,18 @@ public class Trace extends TraceableObject {
 
     public void move() {
         Point nextObjectLastPosition = nextObject.getLastPosition();
-        int x = nextObjectLastPosition.getX();
-        int y = nextObjectLastPosition.getY();
+        int new_x = nextObjectLastPosition.getX();
+        int new_y = nextObjectLastPosition.getY();
 
-        this.setLastPosition(this.getX(), this.getY());
+        int x = this.getX();
+        int y = this.getY();
 
-        this.setX(x);
-        this.setY(y);
+        this.setLastPosition(x, y);
+
+        this.setX(new_x);
+        this.setY(new_y);
+
+        this.updatePositionInGrid(x, y , new_x, new_y);
 
         if(previousObject != null){
             ((Trace) previousObject).move();
@@ -55,53 +67,51 @@ public class Trace extends TraceableObject {
 
     @Override
     public void reaction(Player player) {
-
+        Game.lose(player);
     }
 
     @Override
     public void render(Graphics g) {
 
-        BufferedImage traceSprite = this.getSprite();
+        BufferedImage traceSprite;
 
         int x = this.getX();
         int y = this.getY();
 
         int nextObjectLastAngle = nextObject.getLastAngle(); // Ultimo angulo do proximo objeto (objeto para qual vamos para a antiga posição dele (trace da frente));
         int nextObjectCurrentAngle = nextObject.getCurrentAngle();
+        int displayAngle = nextObjectLastAngle;
         //int currentAngle = this.getCurrentAngle();
-
-
 
         if(nextObjectLastAngle != nextObjectCurrentAngle){
             traceSprite = curvedSprite;
-            if ((nextObjectLastAngle == 0 && nextObjectCurrentAngle == 90) || (nextObjectLastAngle == 90 && nextObjectCurrentAngle == 180) ||
-                    (nextObjectLastAngle == 180 && nextObjectCurrentAngle == 270) || (nextObjectLastAngle == 270 && nextObjectCurrentAngle == 0)) {
+            if ((nextObjectLastAngle == 0 && nextObjectCurrentAngle == 270) || (nextObjectLastAngle == 270 && nextObjectCurrentAngle == 180) ||
+                    (nextObjectLastAngle == 180 && nextObjectCurrentAngle == 90) || (nextObjectLastAngle == 90 && nextObjectCurrentAngle == 0)) {
                 // O personagem está virando para a esquerda, portanto, espelhe a sprite horizontalmente.
 
-                if(nextObjectLastAngle  == 180 || nextObjectLastAngle == 0) {
-                    traceSprite = flipSpriteVertically(traceSprite);
+                if(nextObjectCurrentAngle  == 180 || nextObjectCurrentAngle == 0 || nextObjectLastAngle == 180 || nextObjectLastAngle == 0) {
+                    traceSprite = mirrorVertical(traceSprite);
                 }else{
-                    traceSprite = flipSpriteHorizontally(traceSprite);
+                    traceSprite = mirrorHorizontal(traceSprite);
                 }
             }
+        }else{
+            traceSprite = straightSprite;
+        }
+
+        if(this.previousObject == null){ // Se for o ultimo trace (ponta)
+            traceSprite = lastSprite;
+            // se ele estiver na vertical inverte o angulo
+            displayAngle = nextObjectCurrentAngle;
         }
 
         this.setCurrentAngle(nextObjectLastAngle);
-
-
-        if(this.previousObject == null){ // Se for o ultimo trace (ponta)
-            // se ele estiver na vertical inverte o angulo
-            if(nextObjectLastAngle == 90 || nextObjectLastAngle == 270){
-                nextObjectLastAngle = Math.abs(nextObjectLastAngle + 180); // invertemos o angulo afinal o ultimo trace sendo aponta para o lado inverso de onde o corpo está andando
-            }
-        }
-
         // Criar um novo BufferedImage para a imagem girada
-        BufferedImage rotatedImage = new BufferedImage(traceSprite .getWidth(), traceSprite .getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage rotatedImage = new BufferedImage(traceSprite.getWidth(), traceSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = rotatedImage.createGraphics();
 
         // Definir a transformação de rotação com base no ângulo calculado
-        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(nextObjectLastAngle), traceSprite .getWidth() / 2, traceSprite .getHeight() / 2);
+        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(displayAngle), traceSprite.getWidth() / 2, traceSprite.getHeight() / 2);
         g2d.setTransform(at);
 
         // Desenhar a imagem no novo BufferedImage girado
@@ -112,23 +122,17 @@ public class Trace extends TraceableObject {
         g.drawImage(rotatedImage, x, y, null);
     }
 
-    private BufferedImage flipSpriteHorizontally(BufferedImage image) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-        BufferedImage flippedImage = new BufferedImage(width, height, image.getType());
-        Graphics2D g2d = flippedImage.createGraphics();
-        g2d.drawImage(image, 0, 0, width, height, width, 0, 0, height, null);
-        g2d.dispose();
-        return flippedImage;
+    public static BufferedImage mirrorVertical(BufferedImage originalImage) {
+        AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
+        tx.translate(0, -originalImage.getHeight(null));
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        return op.filter(originalImage, null);
     }
 
-    private BufferedImage flipSpriteVertically(BufferedImage image) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-        BufferedImage flippedImage = new BufferedImage(width, height, image.getType());
-        Graphics2D g2d = flippedImage.createGraphics();
-        g2d.drawImage(image, 0, 0, width, height, 0, height, width, 0, null);
-        g2d.dispose();
-        return flippedImage;
+    public static BufferedImage mirrorHorizontal(BufferedImage originalImage) {
+        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+        tx.translate(-originalImage.getWidth(null), 0);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        return op.filter(originalImage, null);
     }
 }

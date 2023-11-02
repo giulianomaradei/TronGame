@@ -1,11 +1,13 @@
 package Main.Player;
 
 import Main.Game.Game;
+import Main.Point;
 import Main.TraceableObject;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 public abstract class Player extends TraceableObject {
@@ -17,31 +19,14 @@ public abstract class Player extends TraceableObject {
     private int nextHorizontalSpeed = 0;
     private int nextVerticalSpeed = -1;
 
-    private int nextAngle = 0;
-    private Trace[] traces;
+    private int nextAngle = 270;
+    private ArrayList<Trace> traces = new ArrayList<>();
+
+    private int totalTraces = 20;
+    private boolean canMove = true;
 
     public Player(String spriteUrl, int x, int y){
         super(spriteUrl, x, y);
-        setTraces();
-    }
-
-    public void setTraces(){
-        this.traces = new Trace[20];
-        TraceableObject nextObject = this;
-        TraceableObject previousObject = null;
-
-        for (int i = 0; i < traces.length; i++) {
-            String traceUrl = "resources/straightTrace.png";
-            if(i == traces.length-1){
-                traceUrl = "resources/lastTrace.png";
-            }
-            traces[i] = new Trace(traceUrl, this.getX(), this.getY(), nextObject, i);
-            nextObject = traces[i];
-
-            if(i > 0){
-                traces[i-1].setPreviousObject(traces[i]);
-            }
-        }
     }
 
     public void moveUp(){
@@ -49,7 +34,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.nextAngle = 90;
+        this.nextAngle = 270;
         this.nextHorizontalSpeed = 0;
         this.nextVerticalSpeed = -1;
     }
@@ -59,7 +44,7 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        this.nextAngle = 270;
+        this.nextAngle = 90;
         this.nextHorizontalSpeed = 0;
         this.nextVerticalSpeed = 1;
     }
@@ -86,28 +71,64 @@ public abstract class Player extends TraceableObject {
 
     public void move(){
 
+        if(!canMove){
+            return;
+        }
+
         int x = this.getX();
         int y = this.getY();
 
         this.setLastPosition(x, y);
 
-        this.setX(x + (nextHorizontalSpeed * Game.cellSize));
-        this.setY(y + (nextVerticalSpeed * Game.cellSize));
+        int new_x = this.setX(x + (nextHorizontalSpeed * Game.cellSize));
+        int new_y = this.setY(y + (nextVerticalSpeed * Game.cellSize));
+
+        checkCollision(new_x, new_y);
+
+        this.updatePositionInGrid(x, y, new_x, new_y);
 
         this.currentHorizontalSpeed = nextHorizontalSpeed;
         this.currentVerticalSpeed = nextVerticalSpeed;
         this.setCurrentAngle(this.nextAngle);
 
         checkCollisionWall();
+
+        if(traces.size() < totalTraces){
+            addTrace();
+        }
+    }
+
+    private void addTrace() {
+        TraceableObject nextObject = traces.size() == 0 ? this : traces.getLast();
+
+        String traceUrl = "resources/straightTrace.png";
+        String lastTraceUrl = "resources/lastTrace.png";
+
+        Point lastPosition = nextObject.getLastPosition();
+
+        traces.add(new Trace(lastTraceUrl, lastPosition.getX(), lastPosition.getY(), nextObject, traces.size()-1, this));
+
+        if(traces.size() > 1){
+            traces.get(traces.size()-2).setPreviousObject(traces.getLast());
+        }
+    }
+
+    private void checkCollision(int x, int y) {
+        int i = x / Game.cellSize;
+        int j = y / Game.cellSize;
+
+        if(Game.grid[i][j] != null){
+            Game.grid[i][j].reaction(this);
+        }
     }
 
     public void moveTraces(){
-        traces[0].move();
+        traces.getFirst().move();
     }
 
     public void renderTraces(Graphics g){
-        for (int i = 0; i < traces.length; i++) {
-            traces[i].render(g);
+        for (Trace trace : traces) {
+            trace.render(g);
         }
     }
 
@@ -140,9 +161,9 @@ public abstract class Player extends TraceableObject {
         rightX = x + width;
         bottomY = y + height;
 
-        if (x < 0 || rightX > Game.gridWidth || y < 0 || bottomY > Game.gridHeight) {
-            currentHorizontalSpeed = 0;
-            currentVerticalSpeed = 0;
+        if (x <= 0 || rightX >= Game.gridWidth || y <= 0 || bottomY >= Game.gridHeight) {
+            //Game.lose(this);
+            canMove = false;
         }
     }
 
@@ -175,6 +196,19 @@ public abstract class Player extends TraceableObject {
 
         // Desenhar o BufferedImage girado no JPanel
         g.drawImage(rotatedImage, x, y, null);
+    }
+
+    public void reaction(Player player){
+        int this_angle = this.getCurrentAngle();
+        int other_angle = player.getCurrentAngle();
+
+        int difference = Math.abs(this_angle - other_angle);
+
+        if(difference == 180){ //eles estão batendo de frente um para o outro
+            Game.draw();
+        }else{
+            Game.win(this);
+        }
     }
 
 }
