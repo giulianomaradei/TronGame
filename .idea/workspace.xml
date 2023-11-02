@@ -9,9 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="Método CollisionDetected adicionado a gameObject">
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/resources/TrailBonus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/TrailBonus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/Bonus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/TimedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Bonus1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/InvencibleBonus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Bonus2.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/SpeedBonus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Player.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Trace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Trace2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/Bonus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/TrailBonus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Bonus/invincibilityBonus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,24 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/giulianoubunto/IdeaProjects/TronGame&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />

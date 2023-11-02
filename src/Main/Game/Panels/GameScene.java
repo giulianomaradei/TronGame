@@ -64,7 +64,6 @@ public class GameScene extends Scene {
             public void run() {
                 gameFrame.repaint();
                 gameFrame.revalidate();
-                Game.bonusGenerator.spawnRandomBonus(interval);
             }
         }, delay, interval);
     };
