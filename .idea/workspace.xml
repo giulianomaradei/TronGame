@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/resources/GUI/Moto1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="menuStyle" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -49,8 +58,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "menuStyle",
-    "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame",
+    "git-widget-placeholder": "selectionScene",
+    "last_opened_file_path": "/home/mario/IdeaProjects/TronGame/resources/GUI",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
@@ -63,6 +72,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/GUI" />
       <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/out" />
     </key>
@@ -100,6 +110,26 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/menuStyle" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">

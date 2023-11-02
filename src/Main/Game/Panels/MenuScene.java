@@ -19,15 +19,14 @@ public class MenuScene extends Scene {
         super(sceneManager);
         startButton();
         menuBackground();
-        SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
+        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
     }
 
     public void menuBackground(){
         setBackground(black);
         setLayout(new BorderLayout());
         try {
-            BufferedImage backgroundImg = null;
-            backgroundImg = ImageIO.read(new File("src/Res/menu_background.png" ));
+            BufferedImage backgroundImg = ImageIO.read(new File("src/Res/menu_background.png"));
             ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
             JLabel backgroundMenu = new JLabel(menuBackgroundImg);
             backgroundMenu.setIcon(menuBackgroundImg);
@@ -59,9 +58,8 @@ public class MenuScene extends Scene {
                     size.width, size.height);
 
             startButton.addActionListener(e -> {
-                this.sceneManager.showGameplay();
-                SoundHandler.StopMusic();
-                SoundHandler.RunMusic("src/Res/EndOfLine.wav");
+                //this.sceneManager.showGameplay();
+                this.sceneManager.showSelectionScene();
             });
 
         }
@@ -72,28 +70,6 @@ public class MenuScene extends Scene {
 
     public void exitButton(){
 
-    }
-
-
-    public static class SoundHandler{
-        private static Clip clip;
-        public static void RunMusic(String path){
-            try {
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
-                clip = AudioSystem.getClip();
-                clip.open(audio);
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
-            } catch (UnsupportedAudioFileException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e){
-                e.printStackTrace();
-            } catch (LineUnavailableException e) {
-                e.printStackTrace();
-            }
-        }
-        public static void StopMusic(){
-            clip.stop();
-        }
     }
 
     private void title(){
