@@ -1,0 +1,298 @@
+Index: src/Main/Game/Panels/MenuScene.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Main.Game.Panels;\n\nimport Main.Game.GameFrame;\nimport Main.Game.SceneManager;\n\nimport javax.swing.*;\nimport java.awt.*;\n\npublic class MenuScene extends Scene {\n\n    public MenuScene(SceneManager sceneManager) {\n        super(sceneManager);\n\n        setLayout(new BorderLayout());\n\n        this.startButton();\n        this.title();\n    }\n\n    private void startButton(){\n        JButton startButton = new JButton(\"Start Game\");\n        add(startButton, BorderLayout.SOUTH);\n\n        startButton.addActionListener(e -> {\n            this.sceneManager.showGameplay();\n        });\n    }\n\n    private void title(){\n\n        JLabel titleLabel = new JLabel(\"Tron\");\n        titleLabel.setForeground(Color.RED);\n        titleLabel.setFont(new Font(\"Arial\", Font.BOLD, 36));\n        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);\n        add(titleLabel, BorderLayout.NORTH);\n    }\n\n    @Override\n    protected void paintComponent(Graphics g) {\n        super.paintComponent(g); // Call the superclass method\n    }\n\n    public void render(){\n\n    }\n\n    public void update(){\n\n    }\n\n    public void handleInput(){\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main/Game/Panels/MenuScene.java b/src/Main/Game/Panels/MenuScene.java
+--- a/src/Main/Game/Panels/MenuScene.java	(revision f49419f69282a643030ae5119215692a63353484)
++++ b/src/Main/Game/Panels/MenuScene.java	(date 1698953165081)
+@@ -3,37 +3,101 @@
+ import Main.Game.GameFrame;
+ import Main.Game.SceneManager;
+ 
++import javax.imageio.ImageIO;
++import javax.sound.sampled.*;
+ import javax.swing.*;
+ import java.awt.*;
++import java.io.File;
++import java.awt.image.BufferedImage;
++import java.io.IOException;
++
++import static java.awt.Color.black;
+ 
+ public class MenuScene extends Scene {
+ 
+     public MenuScene(SceneManager sceneManager) {
+         super(sceneManager);
++        menuBackground();
++        startButton();
++        SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
++    }
+ 
+-        setLayout(new BorderLayout());
+-
+-        this.startButton();
++    public void menuBackground(){
++        setBackground(black);
++        try {
++            BufferedImage backgroundImg = null;
++            backgroundImg = ImageIO.read(new File("src/Res/menu_background.png" ));
++            ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
++            JLabel backgroundMenu = new JLabel(menuBackgroundImg);
++            backgroundMenu.setIcon(menuBackgroundImg);
++            add(backgroundMenu);
++        }
++        catch(IOException e){
++            e.printStackTrace();
++        }
+         this.title();
+     }
+ 
+     private void startButton(){
+-        JButton startButton = new JButton("Start Game");
+-        add(startButton, BorderLayout.SOUTH);
++        try {
++            BufferedImage buttonIcon = ImageIO.read(new File("src/Res/play_button.png"));
++            int newWidth = 180; // Coloco a largura que eu quero da imagem no botão
++            int newHeight = 85;  //Coloco altura
++            Image scaledImage = buttonIcon.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH); //Modifico a escala do botão
++            ImageIcon startIcon = new ImageIcon(scaledImage); //Transformo em Icon
++            JButton startButton = new JButton(startIcon); // Inicio o botão com o Icon
++            startButton.setPreferredSize(new Dimension(200, 100)); //Tamanho do botão
++            startButton.setBorderPainted(false);
++            startButton.setFocusPainted(false);
++            startButton.setContentAreaFilled(false);
++            add(startButton, BorderLayout.SOUTH);
+ 
+-        startButton.addActionListener(e -> {
+-            this.sceneManager.showGameplay();
+-        });
++            add(startButton);
++
++            startButton.addActionListener(e -> {
++                this.sceneManager.showGameplay();
++                SoundHandler.StopMusic();
++                SoundHandler.RunMusic("src/Res/EndOfLine.wav");
++            });
++
++        }
++        catch(IOException e){
++            e.printStackTrace();
++        }
++    }
++
++    public void exitButton(){
++
++    }
++
++
++    public static class SoundHandler{
++        private static Clip clip;
++        public static void RunMusic(String path){
++            try {
++                AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
++                clip = AudioSystem.getClip();
++                clip.open(audio);
++                clip.loop(Clip.LOOP_CONTINUOUSLY);
++            } catch (UnsupportedAudioFileException e) {
++                throw new RuntimeException(e);
++            } catch (IOException e){
++                e.printStackTrace();
++            } catch (LineUnavailableException e) {
++                e.printStackTrace();
++            }
++        }
++        public static void StopMusic(){
++            clip.stop();
++        }
+     }
+ 
+     private void title(){
+-
+-        JLabel titleLabel = new JLabel("Tron");
++/*        JLabel titleLabel = new JLabel("Tron");
+         titleLabel.setForeground(Color.RED);
+         titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
+-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+-        add(titleLabel, BorderLayout.NORTH);
+-    }
++        add(titleLabel, BorderLayout.EAST);
++*/    }
+ 
+     @Override
+     protected void paintComponent(Graphics g) {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ArtifactsWorkspaceSettings\">\n    <artifacts-to-build>\n      <artifact name=\"Tron:jar\" />\n    </artifacts-to-build>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ef545ae9-40f1-480a-916d-8ab16085c5a1\" name=\"Changes\" comment=\"first\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Main/Player/Player.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main/Player/Player.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Main/Player/Trace.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main/Player/Trace.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Main/TraceableObject.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main/TraceableObject.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"CodeStyleSettingsInfer\">\n    <option name=\"done\" value=\"true\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectCodeStyleSettingsMigration\">\n    <option name=\"version\" value=\"2\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2W1ZGGaSaoROfKZtYJzAXYRy5P5\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/giulianoubunto/IdeaProjects/TronGame&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CreateClassDialog.RecentsKey\">\n      <recent name=\"\" />\n    </key>\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/resources\" />\n      <recent name=\"$PROJECT_DIR$/out\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"Main.Game.Panels\" />\n      <recent name=\"Game.Player.ConcretePlayers\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Unnamed\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main.Main\" />\n      <module name=\"Tron\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ef545ae9-40f1-480a-916d-8ab16085c5a1\" name=\"Changes\" comment=\"\" />\n      <created>1695901950468</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1695901950468</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"first\">\n      <created>1695902063531</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1695902063531</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"first\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"first\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>\n          <line>40</line>\n          <option name=\"timeStamp\" value=\"2\" />\n        </line-breakpoint>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>\n          <line>55</line>\n          <option name=\"timeStamp\" value=\"3\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f49419f69282a643030ae5119215692a63353484)
++++ b/.idea/workspace.xml	(date 1698953172304)
+@@ -5,12 +5,13 @@
+       <artifact name="Tron:jar" />
+     </artifacts-to-build>
+   </component>
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Player.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Trace.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main/TraceableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/TraceableObject.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -29,6 +30,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="menuStyle" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -37,24 +43,35 @@
+   <component name="ProjectCodeStyleSettingsMigration">
+     <option name="version" value="2" />
+   </component>
++  <component name="ProjectColorInfo">{
++  &quot;customColor&quot;: &quot;&quot;,
++  &quot;associatedIndex&quot;: 7
++}</component>
+   <component name="ProjectId" id="2W1ZGGaSaoROfKZtYJzAXYRy5P5" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;/home/giulianoubunto/IdeaProjects/TronGame&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "master",
++    "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Artifacts",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="" />
+@@ -85,6 +102,9 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1695901950468</updated>
++      <workItem from="1698840874168" duration="2257000" />
++      <workItem from="1698941470798" duration="4199000" />
++      <workItem from="1698947789153" duration="4401000" />
+     </task>
+     <task id="LOCAL-00001" summary="first">
+       <created>1695902063531</created>
+@@ -95,13 +115,53 @@
+     </task>
+     <option name="localTasksCounter" value="2" />
+     <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="Branch">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="origin/menuStyle" />
++                </option>
++              </RecentGroup>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="origin/master" />
++                </option>
++              </RecentGroup>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="master" />
++                </option>
++              </RecentGroup>
++            </list>
++          </value>
++        </entry>
++      </map>
++    </option>
+     <option name="TAB_STATES">
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/menuStyle" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+@@ -111,20 +171,4 @@
+     <MESSAGE value="first" />
+     <option name="LAST_COMMIT_MESSAGE" value="first" />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
+-          <line>40</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
+-          <line>55</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+ </project>
+\ No newline at end of file
