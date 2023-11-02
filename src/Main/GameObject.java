@@ -10,42 +10,25 @@ import java.io.IOException;
 
 abstract public class GameObject extends Point implements Collidable, Renderable {
 
-    private String spriteUrl;
-    private BufferedImage sprite;
+    private String spriteName;
 
-    public GameObject(String spriteUrl, int x, int y){
+    public GameObject(int x, int y){
         super(x, y);
         setX(x);
         setY(y);
-
-        this.setPositionInGrid(x, y);
-
-        try {
-            sprite = ImageIO.read(new File(spriteUrl));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public BufferedImage getSprite() {
-        return sprite;
-    }
-
-    public void setSprite(String spriteUrl) {
-        try{
-            sprite = ImageIO.read(new File(spriteUrl));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void updatePositionInGrid(int x, int y, int new_x, int new_y){
 
-        int  i= x / Game.cellSize;
+        int i= x / Game.cellSize;
         int j = y / Game.cellSize;
 
         int ii = new_x / Game.cellSize;
         int jj = new_y / Game.cellSize;
+
+        if(ii >= Game.gridWidth || jj >= Game.gridHeight || ii < 0 || jj < 0){
+            return;
+        }
 
         Game.grid[ii][jj] = Game.grid[i][j];
         Game.grid[i][j] = null;
@@ -55,6 +38,10 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         int i = x / Game.cellSize;
         int j = y / Game.cellSize;
 
+        if(i >= Game.gridWidth || j >= Game.gridHeight || i < 0 || j < 0){
+            return;
+        }
+
         Game.grid[i][j] = this;
     }
 
@@ -63,6 +50,18 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         int j = y / Game.cellSize;
 
         Game.grid[i][j] = null;
+    }
+
+    public void setSprite(String spriteName){
+        this.spriteName = spriteName;
+    }
+
+    public BufferedImage getSprite(){
+        return Game.imageCache.get(spriteName);
+    }
+
+    public String getSpriteName(){
+        return spriteName;
     }
 
     public void render(Graphics g){

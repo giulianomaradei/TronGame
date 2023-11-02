@@ -5,8 +5,9 @@ import Main.Player.Player;
 
 public class InvincibilityBonus extends TimedBonus {
 
-    public InvincibilityBonus(String spriteUrl, int x, int y) {
-        super(spriteUrl, x, y, 2);
+    public InvincibilityBonus(int x, int y) {
+        super(x, y, 2);
+        setSprite("InvincibilityBonus");
     }
 
     @Override

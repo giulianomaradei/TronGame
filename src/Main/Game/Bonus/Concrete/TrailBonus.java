@@ -5,10 +5,10 @@ import Main.Game.Game;
 import Main.Player.Player;
 
 public class TrailBonus extends Bonus {
-    private String spriteUrl;
 
-    public TrailBonus(String spriteUrl, int x, int y) {
-        super(spriteUrl, x, y);
+    public TrailBonus(int x, int y) {
+        super(x, y);
+        setSprite("TrailBonus");
     }
 
     @Override

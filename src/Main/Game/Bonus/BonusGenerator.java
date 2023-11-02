@@ -38,9 +38,9 @@ public class BonusGenerator{
     }
 
     private void bonusesInit(){
-        trailBonus = new TrailBonus("resources/TrailBonus.png", 0, 0);
-        speedBonus = new SpeedBonus("resources/SpeedBonus.png", 0, 0 );
-        invincibilityBonus = new InvincibilityBonus("resources/TrailBonus.png", 0, 0);
+        trailBonus = new TrailBonus(0, 0);
+        speedBonus = new SpeedBonus( 0, 0 );
+        invincibilityBonus = new InvincibilityBonus(0, 0);
     }
 
     private void setBonusRandomPosition(Bonus bonus){

@@ -3,8 +3,8 @@ package Main;
 abstract public class TraceableObject extends GameObject{
     private Point lastPosition;
     private int lastAngle = 270, currentAngle = 270;
-    public TraceableObject(String spriteUrl, int x, int y) {
-        super(spriteUrl, x, y);
+    public TraceableObject(int x, int y) {
+        super(x, y);
         this.lastPosition = new Point(x, y);
     }
 

@@ -6,8 +6,9 @@ import Main.Player.Player;
 public class SpeedBonus extends TimedBonus {
     private float speedBonus = 1.2f;
 
-    public SpeedBonus(String spriteUrl, int x, int y) {
-        super(spriteUrl, x, y, 3);
+    public SpeedBonus(int x, int y) {
+        super(x, y, 3);
+        setSprite("SpeedBonus");
     }
 
     @Override

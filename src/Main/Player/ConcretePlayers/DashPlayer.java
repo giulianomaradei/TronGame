@@ -4,8 +4,9 @@ import Main.Player.Player;
 
 public class DashPlayer extends Player {
 
-    public DashPlayer(String spriteUrl, int x, int y){
-        super(spriteUrl, x, y);
+    public DashPlayer(int x, int y){
+        super(x, y);
+        setSprite("DashPlayer");
     }
 
     public void reaction(Player player){

@@ -4,18 +4,26 @@ import Main.Game.Game;
 import Main.Game.GameFrame;
 import Main.Game.SceneManager;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameScene extends Scene {
 
     private GameFrame gameFrame;
-
+    private BufferedImage background;
     public GameScene(SceneManager sceneManager, GameFrame gameFrame) {
         super(sceneManager);
         this.gameFrame = gameFrame;
 
+        try{
+            background = ImageIO.read(new File("resources/Background.png"));
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
         setStepActions();
         setInputListeners();
@@ -56,7 +64,7 @@ public class GameScene extends Scene {
 
     private void setStepActions(){
         int delay = 0;
-        int interval = 100;
+        int interval = 130;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -70,12 +78,8 @@ public class GameScene extends Scene {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Chama o método da classe pai
 
-        int GameFrameWidth = gameFrame.getWidth();
-        //for(int i=Game.cellSize;i<GameFrameWidth;i+=Game.cellSize){
-            //g.drawLine(i,0, i, GameFrameWidth);
-            //g.drawLine(0,i, GameFrameWidth, i);
+        g.drawImage(background, 0, 0, null);
 
-        //}
         Game.bonusGenerator.renderActiveBonus(g);
         Game.player1.render(g);
         Game.player2.render(g);

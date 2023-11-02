@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 public abstract class Player extends TraceableObject {
 
+    public Player(int x, int y){
+        super(x, y);
+    }
     private double skillCooldown;
     private int currentHorizontalSpeed = 0;
     private int currentVerticalSpeed = -1;
@@ -25,9 +28,7 @@ public abstract class Player extends TraceableObject {
     private int totalTraces = 20;
     private boolean canMove = true;
 
-    public Player(String spriteUrl, int x, int y){
-        super(spriteUrl, x, y);
-    }
+
 
     public void moveUp(){
         if(this.currentVerticalSpeed == 1 || this.currentVerticalSpeed == -1){
@@ -83,6 +84,8 @@ public abstract class Player extends TraceableObject {
         int new_x = this.setX(x + (nextHorizontalSpeed * Game.cellSize));
         int new_y = this.setY(y + (nextVerticalSpeed * Game.cellSize));
 
+
+        checkCollisionWall(new_x, new_y);
         checkCollision(new_x, new_y);
 
         this.setPositionInGrid(new_x, new_y);
@@ -92,7 +95,7 @@ public abstract class Player extends TraceableObject {
         this.currentVerticalSpeed = nextVerticalSpeed;
         this.setCurrentAngle(this.nextAngle);
 
-        checkCollisionWall();
+
 
         if(traces.size() < totalTraces){
             addTrace();
@@ -102,11 +105,9 @@ public abstract class Player extends TraceableObject {
     private void addTrace() {
         TraceableObject nextObject = traces.size() == 0 ? this : traces.getLast();
 
-        String lastTraceUrl = "resources/lastTrace.png";
-
         Point lastPosition = nextObject.getLastPosition();
 
-        traces.add(new Trace(lastTraceUrl, lastPosition.getX(), lastPosition.getY(), nextObject, traces.size()-1, this));
+        traces.add(new Trace(this.getSpriteName(), lastPosition.getX(), lastPosition.getY(), nextObject, traces.size()-1, this));
 
         if(traces.size() > 1){
             traces.get(traces.size()-2).setPreviousObject(traces.getLast());
@@ -116,6 +117,10 @@ public abstract class Player extends TraceableObject {
     private void checkCollision(int x, int y) {
         int i = x / Game.cellSize;
         int j = y / Game.cellSize;
+
+        if(i >= Game.gridWidth || j >= Game.gridHeight || i < 0 || j < 0){
+            return;
+        }
 
         if(Game.grid[i][j] != null){
             Game.grid[i][j].reaction(this);
@@ -132,37 +137,16 @@ public abstract class Player extends TraceableObject {
         }
     }
 
-    public void checkCollisionWall() {
-        int x = this.getX();
-        int y = this.getY();
+    public void checkCollisionWall(int new_x, int new_y) {
         BufferedImage sprite = this.getSprite();
         int width = sprite.getWidth();
         int height = sprite.getHeight();
 
-        int rightX = x + width;
-        int bottomY = y + height;
+        int rightX = new_x + width;
+        int bottomY = new_y + height;
 
-        if (x < 0) {
-            this.setX(0);
-        }
-        if (rightX > Game.gridWidth) {
-            this.setX(Game.gridWidth - width);
-        }
-        if (y < 0) {
-            this.setY(0);
-        }
-        if (bottomY > Game.gridHeight) {
-            this.setY(Game.gridHeight - height);
-        }
-
-        // Verificar se o objeto está colidindo após o ajuste
-        x = this.getX();
-        y = this.getY();
-        rightX = x + width;
-        bottomY = y + height;
-
-        if (x <= 0 || rightX >= Game.gridWidth || y <= 0 || bottomY >= Game.gridHeight) {
-            //Game.lose(this);
+        if (new_x < 0 || rightX > Game.gridWidth || new_y < 0 || bottomY > Game.gridHeight) {
+           //Game.lose(this);
             canMove = false;
         }
     }

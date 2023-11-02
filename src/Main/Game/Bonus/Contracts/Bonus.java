@@ -6,8 +6,8 @@ import Main.Player.Player;
 
 public abstract class Bonus extends GameObject {
 
-    public Bonus(String spriteUrl, int x, int y) {
-        super(spriteUrl, x, y);
+    public Bonus( int x, int y) {
+        super( x, y);
     }
 
     public void reaction(Player player) {

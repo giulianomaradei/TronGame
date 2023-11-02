@@ -15,17 +15,12 @@ import java.io.IOException;
 public class Trace extends TraceableObject {
 
     private Player player;
+    private String playerSpriteName;
 
-    public Trace(String spriteUrl, int x, int y, TraceableObject nextObject, int index, Player player){
-        super(spriteUrl, x, y);
+    public Trace(String playerSpriteName, int x, int y, TraceableObject nextObject, int index, Player player){
+        super(x, y);
 
-        try {
-            this.curvedSprite = ImageIO.read(new File("resources/curvedTrace.png"));
-            this.straightSprite = ImageIO.read(new File("resources/straightTrace.png"));
-            this.lastSprite = ImageIO.read(new File("resources/lastTrace.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.playerSpriteName = playerSpriteName;
         this.nextObject = nextObject;
         this.index = index;
         this.player = player;
@@ -35,10 +30,6 @@ public class Trace extends TraceableObject {
     private TraceableObject previousObject = null;
     private TraceableObject nextObject;
     private int index = 0;
-
-    BufferedImage curvedSprite = null;
-    BufferedImage straightSprite = null;
-    BufferedImage lastSprite = null;
 
     public void setPreviousObject(TraceableObject previousObject){
         this.previousObject = previousObject;
@@ -74,7 +65,8 @@ public class Trace extends TraceableObject {
     @Override
     public void render(Graphics g) {
 
-        BufferedImage traceSprite;
+        boolean shouldMirrorVertical = false;
+        boolean shouldMirrorHorizontal = false;
 
         int x = this.getX();
         int y = this.getY();
@@ -85,28 +77,39 @@ public class Trace extends TraceableObject {
         //int currentAngle = this.getCurrentAngle();
 
         if(nextObjectLastAngle != nextObjectCurrentAngle){
-            traceSprite = curvedSprite;
+            this.setSprite(playerSpriteName + "CurvedTrace");
+
             if ((nextObjectLastAngle == 0 && nextObjectCurrentAngle == 270) || (nextObjectLastAngle == 270 && nextObjectCurrentAngle == 180) ||
                     (nextObjectLastAngle == 180 && nextObjectCurrentAngle == 90) || (nextObjectLastAngle == 90 && nextObjectCurrentAngle == 0)) {
                 // O personagem está virando para a esquerda, portanto, espelhe a sprite horizontalmente.
 
                 if(nextObjectCurrentAngle  == 180 || nextObjectCurrentAngle == 0 || nextObjectLastAngle == 180 || nextObjectLastAngle == 0) {
-                    traceSprite = mirrorVertical(traceSprite);
+                    shouldMirrorVertical = true;
                 }else{
-                    traceSprite = mirrorHorizontal(traceSprite);
+                    shouldMirrorHorizontal = true;
                 }
             }
         }else{
-            traceSprite = straightSprite;
+            this.setSprite(playerSpriteName + "StraightTrace");
         }
 
         if(this.previousObject == null){ // Se for o ultimo trace (ponta)
-            traceSprite = lastSprite;
+            this.setSprite(playerSpriteName + "LastTrace");
             // se ele estiver na vertical inverte o angulo
             displayAngle = nextObjectCurrentAngle;
         }
 
         this.setCurrentAngle(nextObjectLastAngle);
+
+
+        BufferedImage traceSprite = this.getSprite();
+
+        if(shouldMirrorVertical){
+            traceSprite = mirrorVertical(traceSprite);
+        } else if (shouldMirrorHorizontal){
+            traceSprite = mirrorHorizontal(traceSprite);
+        }
+
         // Criar um novo BufferedImage para a imagem girada
         BufferedImage rotatedImage = new BufferedImage(traceSprite.getWidth(), traceSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = rotatedImage.createGraphics();
