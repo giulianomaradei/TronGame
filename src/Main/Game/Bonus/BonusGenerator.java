@@ -59,8 +59,9 @@ public class BonusGenerator{
     private void spawnRandomBonus(){
         int rouletteValue = new Random().nextInt(100);
 
-        if(rouletteValue < 60){
-            setActiveBonus(trailBonus);
+        if(rouletteValue < 100){
+            setActiveBonus(speedBonus);
+            //setActiveBonus(trailBonus);
         } else if (rouletteValue < 80){
             setActiveBonus(speedBonus);
         }else{

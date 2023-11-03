@@ -76,67 +76,35 @@ public class Trace extends TraceableObject {
 
         int nextObjectLastAngle = nextObject.getLastAngle(); // Ultimo angulo do proximo objeto (objeto para qual vamos para a antiga posição dele (trace da frente));
         int nextObjectCurrentAngle = nextObject.getCurrentAngle();
-        int displayAngle = nextObjectLastAngle;
-        //int currentAngle = this.getCurrentAngle();
+
+        BufferedImage traceSprite;
+
 
         if(nextObjectLastAngle != nextObjectCurrentAngle){
-            this.setSprite(playerSpriteName + "CurvedTrace");
+            traceSprite = this.getSprite(playerSpriteName + "CurvedTrace" + nextObjectLastAngle );
 
             if ((nextObjectLastAngle == 0 && nextObjectCurrentAngle == 270) || (nextObjectLastAngle == 270 && nextObjectCurrentAngle == 180) ||
                     (nextObjectLastAngle == 180 && nextObjectCurrentAngle == 90) || (nextObjectLastAngle == 90 && nextObjectCurrentAngle == 0)) {
                 // O personagem está virando para a esquerda, portanto, espelhe a sprite horizontalmente.
 
                 if(nextObjectCurrentAngle  == 180 || nextObjectCurrentAngle == 0 || nextObjectLastAngle == 180 || nextObjectLastAngle == 0) {
-                    shouldMirrorVertical = true;
+                    int displayAngle = Math.abs(nextObjectLastAngle + 90) == 360 ? 0 : Math.abs(nextObjectLastAngle + 90);
+                    traceSprite = this.getSprite(playerSpriteName + "CurvedTrace" + displayAngle );
                 }else{
-                    shouldMirrorHorizontal = true;
+                    int displayAngle = Math.abs(nextObjectLastAngle + 270) == 360 ? 0 : Math.abs(nextObjectLastAngle + 270);
+                    traceSprite = this.getSprite(playerSpriteName + "CurvedTrace" + displayAngle );
                 }
             }
         }else{
-            this.setSprite(playerSpriteName + "StraightTrace");
+            traceSprite = this.getSprite(playerSpriteName + "StraightTrace" + nextObjectLastAngle );
         }
 
         if(this.previousObject == null){ // Se for o ultimo trace (ponta)
-            this.setSprite(playerSpriteName + "LastTrace");
-            // se ele estiver na vertical inverte o angulo
-            displayAngle = nextObjectCurrentAngle;
+            traceSprite = this.getSprite(playerSpriteName + "LastTrace" + nextObjectCurrentAngle );
         }
-
-        BufferedImage traceSprite = this.getSprite();
-
-        if(shouldMirrorVertical){
-            traceSprite = mirrorVertical(traceSprite);
-        } else if (shouldMirrorHorizontal){
-            traceSprite = mirrorHorizontal(traceSprite);
-        }
-
-        // Criar um novo BufferedImage para a imagem girada
-        BufferedImage rotatedImage = new BufferedImage(traceSprite.getWidth(), traceSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = rotatedImage.createGraphics();
-
-        // Definir a transformação de rotação com base no ângulo calculado
-        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(displayAngle), traceSprite.getWidth() / 2, traceSprite.getHeight() / 2);
-        g2d.setTransform(at);
-
-        // Desenhar a imagem no novo BufferedImage girado
-        g2d.drawImage(traceSprite , 0, 0, null);
-        g2d.dispose();
 
         // Desenhar o BufferedImage girado no JPanel
-        g.drawImage(rotatedImage, x, y, null);
+        g.drawImage(traceSprite, x, y, null);
     }
 
-    public static BufferedImage mirrorVertical(BufferedImage originalImage) {
-        AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
-        tx.translate(0, -originalImage.getHeight(null));
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        return op.filter(originalImage, null);
-    }
-
-    public static BufferedImage mirrorHorizontal(BufferedImage originalImage) {
-        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-        tx.translate(-originalImage.getWidth(null), 0);
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        return op.filter(originalImage, null);
-    }
 }

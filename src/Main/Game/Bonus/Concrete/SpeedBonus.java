@@ -14,5 +14,6 @@ public class SpeedBonus extends TimedBonus {
     @Override
     public void reaction(Player player) {
         super.reaction();
+        player.speedBonusReaction();
     }
 }

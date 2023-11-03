@@ -56,7 +56,7 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         this.spriteName = spriteName;
     }
 
-    public BufferedImage getSprite(){
+    public BufferedImage getSprite(String spriteName){
         return Game.imageCache.get(spriteName);
     }
 
@@ -67,7 +67,7 @@ abstract public class GameObject extends Point implements Collidable, Renderable
     public void render(Graphics g){
         int x = this.getX();
         int y = this.getY();
-        BufferedImage sprite = this.getSprite();
+        BufferedImage sprite = this.getSprite(this.getSpriteName());
         g.drawImage(sprite, x, y, null);
     }
 }

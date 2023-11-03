@@ -8,6 +8,9 @@ import Main.Player.Player;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
@@ -48,20 +51,20 @@ public class Game {
             BufferedImage SpeedBonus = ImageIO.read(new File("resources/Bonus/SpeedBonus.png"));
             BufferedImage InvincibleBonus = ImageIO.read(new File("resources/Bonus/InvincibleBonus.png"));
 
-            imageCache.put("DashPlayer", DashPlayer);
-            imageCache.put("DashPlayerStraightTrace", DashPlayerStraightTrace);
-            imageCache.put("DashPlayerCurvedTrace", DashPlayerCurvedTrace);
-            imageCache.put("DashPlayerLastTrace", DashPlayerLastTrace);
+            setSpriteAngles(DashPlayer, "DashPlayer");
+            setSpriteAngles(DashPlayerStraightTrace, "DashPlayerStraightTrace");
+            setSpriteAngles(DashPlayerCurvedTrace, "DashPlayerCurvedTrace");
+            setSpriteAngles(DashPlayerLastTrace, "DashPlayerLastTrace");
 
-            imageCache.put("JumpPlayer", JumpPlayer);
-            imageCache.put("JumpPlayerStraightTrace", JumpPlayerStraightTrace);
-            imageCache.put("JumpPlayerCurvedTrace", JumpPlayerCurvedTrace);
-            imageCache.put("JumpPlayerLastTrace", JumpPlayerLastTrace);
+            setSpriteAngles(JumpPlayer, "JumpPlayer");
+            setSpriteAngles(JumpPlayerStraightTrace, "JumpPlayerStraightTrace");
+            setSpriteAngles(JumpPlayerCurvedTrace, "JumpPlayerCurvedTrace");
+            setSpriteAngles(JumpPlayerLastTrace, "JumpPlayerLastTrace");
 
-            imageCache.put("TeleportPlayer", TeleportPlayer);
-            imageCache.put("TeleportPlayerStraightTrace", TeleportPlayerStraightTrace);
-            imageCache.put("TeleportPlayerCurvedTrace", TeleportPlayerCurvedTrace);
-            imageCache.put("TeleportPlayerLastTrace", TeleportPlayerLastTrace);
+            setSpriteAngles(TeleportPlayer, "TeleportPlayer");
+            setSpriteAngles(TeleportPlayerStraightTrace, "TeleportPlayerStraightTrace");
+            setSpriteAngles(TeleportPlayerCurvedTrace, "TeleportPlayerCurvedTrace");
+            setSpriteAngles(TeleportPlayerLastTrace, "TeleportPlayerLastTrace");
 
             imageCache.put("TrailBonus", TrailBonus);
             imageCache.put("SpeedBonus", SpeedBonus);
@@ -107,5 +110,40 @@ public class Game {
         player1 = new DashPlayer(400, 400);
         player2 = new JumpPlayer(300, 300);
         bonusGenerator = new BonusGenerator();
+    }
+
+    public static void setSpriteAngles(BufferedImage sprite, String spriteName){
+        for(int angle = 0;angle <= 270; angle+=90){
+            BufferedImage rotatedImage = new BufferedImage(sprite.getWidth(), sprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = rotatedImage.createGraphics();
+            AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(angle), sprite.getWidth() / 2, sprite.getHeight() / 2);
+            g2d.setTransform(at);
+
+            g2d.drawImage(sprite , 0, 0, null);
+            g2d.dispose();
+
+            imageCache.put(spriteName + angle, rotatedImage);
+
+            if(spriteName == "DashPlayerCurvedTrace" || spriteName == "JumpPlayerCurvedTrace" || spriteName == "TeleportPlayerCurvedTrace"){
+                mirrorHorizontal(rotatedImage, spriteName + angle);
+                mirrorVertical(rotatedImage, spriteName + angle);
+            }
+        }
+    }
+
+    public static void mirrorVertical(BufferedImage originalImage, String spriteName) {
+        AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
+        tx.translate(0, -originalImage.getHeight(null));
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        BufferedImage mirroredImage = op.filter(originalImage, null);
+        imageCache.put(spriteName+"VerticallyMirrored" ,mirroredImage);
+    }
+
+    public static void mirrorHorizontal(BufferedImage originalImage, String spriteName) {
+        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+        tx.translate(-originalImage.getWidth(null), 0);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        BufferedImage mirroredImage = op.filter(originalImage, null);
+        imageCache.put(spriteName+"HorizontallyMirrored" ,mirroredImage);
     }
 }

@@ -31,10 +31,12 @@ public abstract class Player extends TraceableObject {
     private int totalTraces = 20;
     private boolean canMove = true;
 
+    private Timer timer;
+    private int interval = 120;
+
     private void setStepActions(){
         int delay = 0;
-        int interval = 100;
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 move();
@@ -97,7 +99,6 @@ public abstract class Player extends TraceableObject {
         int new_x = this.setX(x + (nextHorizontalSpeed * Game.cellSize));
         int new_y = this.setY(y + (nextVerticalSpeed * Game.cellSize));
 
-
         checkCollisionWall(new_x, new_y);
         checkCollision(new_x, new_y);
 
@@ -107,8 +108,6 @@ public abstract class Player extends TraceableObject {
         this.currentHorizontalSpeed = nextHorizontalSpeed;
         this.currentVerticalSpeed = nextVerticalSpeed;
         this.setCurrentAngle(this.nextAngle);
-
-
 
         if(traces.size() < totalTraces){
             addTrace();
@@ -151,9 +150,8 @@ public abstract class Player extends TraceableObject {
     }
 
     private void checkCollisionWall(int new_x, int new_y) {
-        BufferedImage sprite = this.getSprite();
-        int width = sprite.getWidth();
-        int height = sprite.getHeight();
+        int width = Game.cellSize;
+        int height = Game.cellSize;
 
         int rightX = new_x + width;
         int bottomY = new_y + height;
@@ -171,33 +169,52 @@ public abstract class Player extends TraceableObject {
         this.totalTraces += 2;
     }
 
+    public void speedBonusReaction(){
+        setStepRate(80);
+
+        Timer timer = new Timer();
+        int delay = 2000;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                setStepRate(120);
+            }
+        }, delay);
+    }
+
+    private void setStepRate(int rate){
+        if (timer != null) {
+            timer.cancel(); // Interrompe o Timer atual
+        }
+
+        move();
+        moveTraces();
+
+        interval = rate; // Atualiza o intervalo
+
+        // Cria um novo Timer com o novo intervalo
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                move();
+                moveTraces();
+            }
+        }, 0, interval);
+    }
+
 
 
     @Override
     public void render(Graphics g) {
         this.renderTraces(g);
 
-        BufferedImage playerSprite = this.getSprite();
+        BufferedImage playerSprite = this.getSprite(this.getSpriteName() + this.getCurrentAngle());
 
         int x = this.getX();
         int y = this.getY();
 
-        double rotationAngle = this.getCurrentAngle();
-
-        // Criar um novo BufferedImage para a imagem girada
-        BufferedImage rotatedImage = new BufferedImage(playerSprite.getWidth(), playerSprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = rotatedImage.createGraphics();
-
-        // Definir a transformação de rotação com base no ângulo calculado
-        AffineTransform at = AffineTransform.getRotateInstance(Math.toRadians(rotationAngle), playerSprite.getWidth() / 2, playerSprite.getHeight() / 2);
-        g2d.setTransform(at);
-
-        // Desenhar a imagem no novo BufferedImage girado
-        g2d.drawImage(playerSprite, 0, 0, null);
-        g2d.dispose();
-
         // Desenhar o BufferedImage girado no JPanel
-        g.drawImage(rotatedImage, x, y, null);
+        g.drawImage(playerSprite, x, y, null);
     }
 
     public void reaction(Player player){
