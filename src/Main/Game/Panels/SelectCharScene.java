@@ -1,26 +1,35 @@
 package Main.Game.Panels;
 
+import Main.Game.Game;
+import Main.Game.GameFrame;
 import Main.Game.SceneManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static java.awt.Color.black;
 
 public class SelectCharScene extends Scene{
+
     public SelectCharScene(SceneManager sceneManager){
         super(sceneManager);
         setBackground(black);
         setLayout(null);
         characterImages();
         selectBackground();
+        descriptionCharacters();
+        selectImages();
     }
 
     private void selectBackground(){
+
     }
 
     private void characterImages(){
@@ -70,12 +79,62 @@ public class SelectCharScene extends Scene{
             esmeraldaImg2.setBounds(647 + insets.left, 406 + insets.top,
                     size.width, size.height);
 
+
+
         } catch(IOException e){
             e.printStackTrace();
         }
     }
 
+    private void descriptionCharacters(){
 
+    }
+
+    private void selectImages(){
+        try{
+            BufferedImage selectBImagesP1 = ImageIO.read(new File("resources/GUI/player1.png"));
+            BufferedImage selectBImagesP2 = ImageIO.read(new File("resources/GUI/player2.png"));
+            Image selectImgScale1 = selectBImagesP1.getScaledInstance(64, 64, Image.SCALE_SMOOTH); //Modifico a escala do botão
+            Image selectImgScale2 = selectBImagesP2.getScaledInstance(64, 64, Image.SCALE_SMOOTH); //Modifico a escala do botão
+            ImageIcon selectImgP1 = new ImageIcon(selectImgScale1);
+            ImageIcon selectImgP2 = new ImageIcon(selectImgScale2);
+            JLabel selectP1 = new JLabel(selectImgP1);
+            JLabel selectP2 = new JLabel(selectImgP2);
+
+            add(selectP1);
+            add(selectP2);
+
+            Insets insets = this.getInsets();
+            Dimension size = selectP1.getPreferredSize();
+            selectP1.setBounds(150 + insets.left, 55 + insets.top,
+                    size.width, size.height);
+            selectP2.setBounds(150 + insets.left, 115 + insets.top,
+                    size.width, size.height);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+/*
+    private void setInputListeners() {
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                System.out.println("Teste");
+                switch (evt.getKeyCode()) {
+                    case java.awt.event.KeyEvent.VK_UP:
+                        System.out.println("Seta para Cima pressionada");
+                        break;
+                    case java.awt.event.KeyEvent.VK_DOWN:
+                        System.out.println("Seta para Baixo pressionada");
+                        break;
+                    case java.awt.event.KeyEvent.VK_W, java.awt.event.KeyEvent.VK_S:
+                        System.out.println("Seta");
+                        break;
+                }
+            }
+        });
+    }
+*/
 
     @Override
     public void render() {

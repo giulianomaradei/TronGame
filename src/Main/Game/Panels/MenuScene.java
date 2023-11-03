@@ -19,14 +19,19 @@ public class MenuScene extends Scene {
         super(sceneManager);
         startButton();
         menuBackground();
-        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
+        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wa");
     }
 
     public void menuBackground(){
         setBackground(black);
         setLayout(new BorderLayout());
         try {
-            BufferedImage backgroundImg = ImageIO.read(new File("src/Res/menu_background.png"));
+            /*BufferedImage titleImg = ImageIO.read(new File("resources/GUI/lightCycle.png"));
+            Image scaledTitle = titleImg.getScaledInstance(170,26, Image.SCALE_SMOOTH); //Modifico a escala do botão
+            ImageIcon menuTitleImg = new ImageIcon(scaledTitle);
+            JLabel titleMenu = new JLabel(menuTitleImg); */
+
+            BufferedImage backgroundImg = ImageIO.read(new File("resources/GUI/menu_background.jpg"));
             ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
             JLabel backgroundMenu = new JLabel(menuBackgroundImg);
             backgroundMenu.setIcon(menuBackgroundImg);

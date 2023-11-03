@@ -10,12 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/resources/GUI/Moto1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/GUI/descriptionSafira.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/GUI/titleDescriptionSafira.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GUI/selectBackimg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,16 +144,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
     <option name="LAST_COMMIT_MESSAGE" value="first" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

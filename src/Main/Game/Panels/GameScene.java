@@ -83,7 +83,6 @@ public class GameScene extends Scene {
         //for(int i=Game.cellSize;i<GameFrameWidth;i+=Game.cellSize){
             //g.drawLine(i,0, i, GameFrameWidth);
             //g.drawLine(0,i, GameFrameWidth, i);
-
         //}
 
         Game.player1.render(g);
