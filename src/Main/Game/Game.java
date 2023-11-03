@@ -69,18 +69,15 @@ public class Game {
 
         }catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            grid = new GameObject[gridWidth / cellSize][gridHeight / cellSize];
+
+            SwingUtilities.invokeLater(() -> {
+                GameFrame frame = new GameFrame();
+                frame.setVisible(true);
+            });
         }
-        grid = new GameObject[gridWidth / cellSize][gridHeight / cellSize];
 
-
-        player1 = new DashPlayer(400, 400);
-        player2 = new JumpPlayer(300, 300);
-        bonusGenerator = new BonusGenerator();
-
-        SwingUtilities.invokeLater(() -> {
-            GameFrame frame = new GameFrame();
-            frame.setVisible(true);
-        });
     }
 
     public static void draw() {
@@ -104,5 +101,11 @@ public class Game {
             System.out.println("Player 1 Ganhou!");
         }
         System.exit(0);
+    }
+
+    public static void start() {
+        player1 = new DashPlayer(400, 400);
+        player2 = new JumpPlayer(300, 300);
+        bonusGenerator = new BonusGenerator();
     }
 }

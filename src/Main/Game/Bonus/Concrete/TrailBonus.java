@@ -13,6 +13,7 @@ public class TrailBonus extends Bonus {
 
     @Override
     public void reaction(Player player) {
-        super.reaction(player);
+        super.reaction();
+        player.trailBonusReaction();
     }
 }

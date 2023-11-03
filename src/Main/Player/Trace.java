@@ -40,6 +40,9 @@ public class Trace extends TraceableObject {
         int new_x = nextObjectLastPosition.getX();
         int new_y = nextObjectLastPosition.getY();
 
+        int new_angle = nextObject.getLastAngle();
+        this.setCurrentAngle(new_angle);
+
         int x = this.getX();
         int y = this.getY();
 
@@ -98,9 +101,6 @@ public class Trace extends TraceableObject {
             // se ele estiver na vertical inverte o angulo
             displayAngle = nextObjectCurrentAngle;
         }
-
-        this.setCurrentAngle(nextObjectLastAngle);
-
 
         BufferedImage traceSprite = this.getSprite();
 

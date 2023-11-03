@@ -10,7 +10,7 @@ public abstract class Bonus extends GameObject {
         super( x, y);
     }
 
-    public void reaction(Player player) {
+    public void reaction() {
         Game.bonusGenerator.activeBonusDeactivation();
         this.removePositionInGrid(getX(), getY());
     }

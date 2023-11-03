@@ -8,12 +8,15 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public abstract class Player extends TraceableObject {
 
     public Player(int x, int y){
         super(x, y);
+        setStepActions();
     }
     private double skillCooldown;
     private int currentHorizontalSpeed = 0;
@@ -28,7 +31,17 @@ public abstract class Player extends TraceableObject {
     private int totalTraces = 20;
     private boolean canMove = true;
 
-
+    private void setStepActions(){
+        int delay = 0;
+        int interval = 100;
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                move();
+                moveTraces();
+            }
+        }, delay, interval);
+    };
 
     public void moveUp(){
         if(this.currentVerticalSpeed == 1 || this.currentVerticalSpeed == -1){
@@ -127,17 +140,17 @@ public abstract class Player extends TraceableObject {
         }
     }
 
-    public void moveTraces(){
+    private void moveTraces(){
         traces.getFirst().move();
     }
 
-    public void renderTraces(Graphics g){
+    private void renderTraces(Graphics g){
         for (Trace trace : traces) {
             trace.render(g);
         }
     }
 
-    public void checkCollisionWall(int new_x, int new_y) {
+    private void checkCollisionWall(int new_x, int new_y) {
         BufferedImage sprite = this.getSprite();
         int width = sprite.getWidth();
         int height = sprite.getHeight();
@@ -152,11 +165,16 @@ public abstract class Player extends TraceableObject {
     }
 
 
+    //////// BONUS REACTIONS ////////
+
+    public void trailBonusReaction(){
+        this.totalTraces += 2;
+    }
+
+
 
     @Override
     public void render(Graphics g) {
-        this.move();
-        this.moveTraces();
         this.renderTraces(g);
 
         BufferedImage playerSprite = this.getSprite();

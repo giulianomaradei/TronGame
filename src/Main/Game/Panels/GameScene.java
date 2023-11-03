@@ -27,6 +27,7 @@ public class GameScene extends Scene {
 
         setStepActions();
         setInputListeners();
+        Game.start();
     }
 
     private void setInputListeners() {
@@ -64,7 +65,7 @@ public class GameScene extends Scene {
 
     private void setStepActions(){
         int delay = 0;
-        int interval = 130;
+        int interval = 50;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {

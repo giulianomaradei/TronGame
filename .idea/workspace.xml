@@ -7,32 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b36a4038-3db1-4812-9bfd-1a1c1493fa24" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/resources/Background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/Bonus/InvincibleBonus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/Bonus/SpeedBonus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/Bonus/TrailBonus.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/InvencibleBonus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Moto1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/SpeedBonus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/TrailBonus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/curvedTrace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lastTrace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/straightTrace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/TrailBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/TrailBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/Bonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/TimedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/TimedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/DashPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/DashPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/JumpPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/JumpPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Trace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/TraceableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/TraceableObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
