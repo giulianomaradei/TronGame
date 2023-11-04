@@ -123,27 +123,6 @@ public class Game {
             g2d.dispose();
 
             imageCache.put(spriteName + angle, rotatedImage);
-
-            if(spriteName == "DashPlayerCurvedTrace" || spriteName == "JumpPlayerCurvedTrace" || spriteName == "TeleportPlayerCurvedTrace"){
-                mirrorHorizontal(rotatedImage, spriteName + angle);
-                mirrorVertical(rotatedImage, spriteName + angle);
-            }
         }
-    }
-
-    public static void mirrorVertical(BufferedImage originalImage, String spriteName) {
-        AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
-        tx.translate(0, -originalImage.getHeight(null));
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        BufferedImage mirroredImage = op.filter(originalImage, null);
-        imageCache.put(spriteName+"VerticallyMirrored" ,mirroredImage);
-    }
-
-    public static void mirrorHorizontal(BufferedImage originalImage, String spriteName) {
-        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-        tx.translate(-originalImage.getWidth(null), 0);
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        BufferedImage mirroredImage = op.filter(originalImage, null);
-        imageCache.put(spriteName+"HorizontallyMirrored" ,mirroredImage);
     }
 }

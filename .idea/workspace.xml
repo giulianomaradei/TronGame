@@ -7,13 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b36a4038-3db1-4812-9bfd-1a1c1493fa24" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/src/Main/Game/Panels/RenderThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Player/Trace.java" afterDir="false" />
     </list>
@@ -126,15 +122,7 @@
     <MESSAGE value="first" />
     <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Player.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TronGame$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1699063995637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

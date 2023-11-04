@@ -68,9 +68,6 @@ public class Trace extends TraceableObject {
     @Override
     public void render(Graphics g) {
 
-        boolean shouldMirrorVertical = false;
-        boolean shouldMirrorHorizontal = false;
-
         int x = this.getX();
         int y = this.getY();
 
@@ -78,7 +75,6 @@ public class Trace extends TraceableObject {
         int nextObjectCurrentAngle = nextObject.getCurrentAngle();
 
         BufferedImage traceSprite;
-
 
         if(nextObjectLastAngle != nextObjectCurrentAngle){
             traceSprite = this.getSprite(playerSpriteName + "CurvedTrace" + nextObjectLastAngle );
@@ -105,6 +101,10 @@ public class Trace extends TraceableObject {
 
         // Desenhar o BufferedImage girado no JPanel
         g.drawImage(traceSprite, x, y, null);
+
+        if(previousObject != null){
+            ((Trace) previousObject).render(g);
+        }
     }
 
 }

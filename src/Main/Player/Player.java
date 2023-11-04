@@ -10,13 +10,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Semaphore;
 
 
 public abstract class Player extends TraceableObject {
 
     public Player(int x, int y){
         super(x, y);
-        setStepActions();
+        setStepRate(120);
     }
     private double skillCooldown;
     private int currentHorizontalSpeed = 0;
@@ -34,16 +35,9 @@ public abstract class Player extends TraceableObject {
     private Timer timer;
     private int interval = 120;
 
-    private void setStepActions(){
-        int delay = 0;
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                move();
-                moveTraces();
-            }
-        }, delay, interval);
-    };
+    private final Semaphore moveRenderSemaphore = new Semaphore(1);
+
+
 
     public void moveUp(){
         if(this.currentVerticalSpeed == 1 || this.currentVerticalSpeed == -1){
@@ -91,27 +85,36 @@ public abstract class Player extends TraceableObject {
             return;
         }
 
-        int x = this.getX();
-        int y = this.getY();
+        try {
+            moveRenderSemaphore.acquire();
 
-        this.setLastPosition(x, y);
+            int x = this.getX();
+            int y = this.getY();
 
-        int new_x = this.setX(x + (nextHorizontalSpeed * Game.cellSize));
-        int new_y = this.setY(y + (nextVerticalSpeed * Game.cellSize));
+            this.setLastPosition(x, y);
 
-        checkCollisionWall(new_x, new_y);
-        checkCollision(new_x, new_y);
+            int new_x = this.setX(x + (nextHorizontalSpeed * Game.cellSize));
+            int new_y = this.setY(y + (nextVerticalSpeed * Game.cellSize));
 
-        this.setPositionInGrid(new_x, new_y);
-        this.removePositionInGrid(x, y);
+            checkCollisionWall(new_x, new_y);
+            checkCollision(new_x, new_y);
 
-        this.currentHorizontalSpeed = nextHorizontalSpeed;
-        this.currentVerticalSpeed = nextVerticalSpeed;
-        this.setCurrentAngle(this.nextAngle);
+            this.setPositionInGrid(new_x, new_y);
+            this.removePositionInGrid(x, y);
 
-        if(traces.size() < totalTraces){
-            addTrace();
+            this.currentHorizontalSpeed = nextHorizontalSpeed;
+            this.currentVerticalSpeed = nextVerticalSpeed;
+            this.setCurrentAngle(this.nextAngle);
+
+            if(traces.size() < totalTraces){
+                addTrace();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            moveRenderSemaphore.release();
         }
+
     }
 
     private void addTrace() {
@@ -144,9 +147,7 @@ public abstract class Player extends TraceableObject {
     }
 
     private void renderTraces(Graphics g){
-        for (Trace trace : traces) {
-            trace.render(g);
-        }
+        traces.getFirst().render(g);
     }
 
     private void checkCollisionWall(int new_x, int new_y) {
@@ -162,33 +163,10 @@ public abstract class Player extends TraceableObject {
         }
     }
 
-
-    //////// BONUS REACTIONS ////////
-
-    public void trailBonusReaction(){
-        this.totalTraces += 2;
-    }
-
-    public void speedBonusReaction(){
-        setStepRate(80);
-
-        Timer timer = new Timer();
-        int delay = 2000;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                setStepRate(120);
-            }
-        }, delay);
-    }
-
     private void setStepRate(int rate){
         if (timer != null) {
             timer.cancel(); // Interrompe o Timer atual
         }
-
-        move();
-        moveTraces();
 
         interval = rate; // Atualiza o intervalo
 
@@ -203,18 +181,44 @@ public abstract class Player extends TraceableObject {
     }
 
 
+    //////// BONUS REACTIONS ////////
+
+    public void trailBonusReaction(){
+        this.totalTraces += 2;
+    }
+
+    public void speedBonusReaction(){
+        setStepRate(80);
+
+        Timer timer = new Timer();
+        int delay = 4000;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                setStepRate(120);
+            }
+        }, delay);
+    }
 
     @Override
     public void render(Graphics g) {
-        this.renderTraces(g);
 
-        BufferedImage playerSprite = this.getSprite(this.getSpriteName() + this.getCurrentAngle());
+        try {
+            moveRenderSemaphore.acquire();
+            BufferedImage playerSprite = this.getSprite(this.getSpriteName() + this.getCurrentAngle());
 
-        int x = this.getX();
-        int y = this.getY();
+            int x = this.getX();
+            int y = this.getY();
 
-        // Desenhar o BufferedImage girado no JPanel
-        g.drawImage(playerSprite, x, y, null);
+            // Desenhar o BufferedImage girado no JPanel
+            g.drawImage(playerSprite, x, y, null);
+
+            this.renderTraces(g);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            moveRenderSemaphore.release();
+        }
     }
 
     public void reaction(Player player){
