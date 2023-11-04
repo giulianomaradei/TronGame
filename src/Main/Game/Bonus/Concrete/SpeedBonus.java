@@ -1,10 +1,11 @@
 package Main.Game.Bonus.Concrete;
 
 import Main.Game.Bonus.Contracts.TimedBonus;
-import Main.Player.Player;
+import Main.Game.Player.Contracts.Player;
 
 public class SpeedBonus extends TimedBonus {
-    private float speedBonus = 1.2f;
+    private int speedBonus = 80;
+
 
     public SpeedBonus(int x, int y) {
         super(x, y, 3);
@@ -14,6 +15,6 @@ public class SpeedBonus extends TimedBonus {
     @Override
     public void reaction(Player player) {
         super.reaction();
-        player.speedBonusReaction();
+        player.speedBonusReaction(speedBonus, durationTime);
     }
 }

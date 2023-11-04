@@ -1,6 +1,7 @@
 package Main.Game.Bonus;
 
 import Main.Game.Bonus.Concrete.InvincibilityBonus;
+import Main.Game.Bonus.Concrete.ShortTraceBonus;
 import Main.Game.Bonus.Concrete.SpeedBonus;
 import Main.Game.Bonus.Concrete.TrailBonus;
 import Main.Game.Bonus.Contracts.Bonus;
@@ -20,6 +21,7 @@ public class BonusGenerator{
     private TrailBonus trailBonus;
     private SpeedBonus speedBonus;
     private InvincibilityBonus invincibilityBonus;
+    private ShortTraceBonus shortTraceBonus;
 
     public BonusGenerator() {
         scheduleBonusSpawner();
@@ -41,6 +43,7 @@ public class BonusGenerator{
         trailBonus = new TrailBonus(0, 0);
         speedBonus = new SpeedBonus( 0, 0 );
         invincibilityBonus = new InvincibilityBonus(0, 0);
+        shortTraceBonus = new ShortTraceBonus(0, 0);
     }
 
     private void setBonusRandomPosition(Bonus bonus){
@@ -60,7 +63,7 @@ public class BonusGenerator{
         int rouletteValue = new Random().nextInt(100);
 
         if(rouletteValue < 100){
-            setActiveBonus(speedBonus);
+            setActiveBonus(invincibilityBonus);
             //setActiveBonus(trailBonus);
         } else if (rouletteValue < 80){
             setActiveBonus(speedBonus);

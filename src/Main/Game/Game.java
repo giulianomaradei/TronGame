@@ -1,16 +1,16 @@
 package Main.Game;
 
 import Main.Game.Bonus.BonusGenerator;
+import Main.Game.Scenes.Concrete.GameFrame;
 import Main.GameObject;
-import Main.Player.ConcretePlayers.DashPlayer;
-import Main.Player.ConcretePlayers.JumpPlayer;
-import Main.Player.Player;
+import Main.Game.Player.Concrete.DashPlayer;
+import Main.Game.Player.Concrete.JumpPlayer;
+import Main.Game.Player.Contracts.Player;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
@@ -50,6 +50,7 @@ public class Game {
             BufferedImage TrailBonus = ImageIO.read(new File("resources/Bonus/TrailBonus.png"));
             BufferedImage SpeedBonus = ImageIO.read(new File("resources/Bonus/SpeedBonus.png"));
             BufferedImage InvincibleBonus = ImageIO.read(new File("resources/Bonus/InvincibleBonus.png"));
+            BufferedImage ShortTraceBonus = ImageIO.read(new File("resources/Bonus/ShortTraceBonus.png"));
 
             setSpriteAngles(DashPlayer, "DashPlayer");
             setSpriteAngles(DashPlayerStraightTrace, "DashPlayerStraightTrace");
@@ -68,7 +69,8 @@ public class Game {
 
             imageCache.put("TrailBonus", TrailBonus);
             imageCache.put("SpeedBonus", SpeedBonus);
-            imageCache.put("InvincibleBonus", InvincibleBonus);
+            imageCache.put("InvincibilityBonus", InvincibleBonus);
+            imageCache.put("ShortTraceBonus", ShortTraceBonus);
 
         }catch (Exception e) {
             e.printStackTrace();

@@ -2,7 +2,6 @@ package Main.Game.Bonus.Contracts;
 
 import Main.Game.Game;
 import Main.GameObject;
-import Main.Player.Player;
 
 public abstract class Bonus extends GameObject {
 

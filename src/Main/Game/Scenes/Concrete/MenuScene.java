@@ -1,7 +1,6 @@
-package Main.Game.Panels;
+package Main.Game.Scenes.Concrete;
 
-import Main.Game.GameFrame;
-import Main.Game.SceneManager;
+import Main.Game.Scenes.Contracts.Scene;
 
 import javax.swing.*;
 import java.awt.*;

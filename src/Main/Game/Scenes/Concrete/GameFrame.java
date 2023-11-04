@@ -1,4 +1,7 @@
-package Main.Game;
+package Main.Game.Scenes.Concrete;
+
+import Main.Game.Game;
+import Main.Game.Scenes.Concrete.SceneManager;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,8 +1,7 @@
 package Main.Game.Bonus.Concrete;
 
 import Main.Game.Bonus.Contracts.Bonus;
-import Main.Game.Game;
-import Main.Player.Player;
+import Main.Game.Player.Contracts.Player;
 
 public class TrailBonus extends Bonus {
 

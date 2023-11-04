@@ -1,6 +1,4 @@
-package Main.Game.Panels;
-
-import Main.Game.GameFrame;
+package Main.Game.Scenes.Concrete;
 
 public class RenderThread extends Thread {
     private GameFrame gameFrame;

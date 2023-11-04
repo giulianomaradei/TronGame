@@ -1,10 +1,6 @@
-package Main.Game;
+package Main.Game.Scenes.Concrete;
 
-import Main.Game.Panels.GameScene;
-import Main.Game.Panels.MenuScene;
-import Main.Game.Panels.Scene;
-
-import javax.swing.*;
+import Main.Game.Scenes.Contracts.Scene;
 
 public class SceneManager {
     private GameFrame gameFrame;

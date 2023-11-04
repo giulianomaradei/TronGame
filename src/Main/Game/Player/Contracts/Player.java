@@ -1,11 +1,11 @@
-package Main.Player;
+package Main.Game.Player.Contracts;
 
 import Main.Game.Game;
+import Main.Game.Player.Trace;
 import Main.Point;
 import Main.TraceableObject;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -27,7 +27,7 @@ public abstract class Player extends TraceableObject {
     private int nextVerticalSpeed = -1;
 
     private int nextAngle = 270;
-    private ArrayList<Trace> traces = new ArrayList<>();
+    private final ArrayList<Trace> traces = new ArrayList<>();
 
     private int totalTraces = 20;
     private boolean canMove = true;
@@ -37,6 +37,8 @@ public abstract class Player extends TraceableObject {
 
     private final Semaphore moveRenderSemaphore = new Semaphore(1);
 
+    private boolean isInvencible = false;
+    private boolean isShorted = false;
 
 
     public void moveUp(){
@@ -106,7 +108,7 @@ public abstract class Player extends TraceableObject {
             this.currentVerticalSpeed = nextVerticalSpeed;
             this.setCurrentAngle(this.nextAngle);
 
-            if(traces.size() < totalTraces){
+            if(traces.size() < totalTraces && !isShorted){
                 addTrace();
             }
         } catch (InterruptedException e) {
@@ -187,15 +189,47 @@ public abstract class Player extends TraceableObject {
         this.totalTraces += 2;
     }
 
-    public void speedBonusReaction(){
-        setStepRate(80);
+    public void speedBonusReaction(int speedBonus, int durationTime){
+        setStepRate(speedBonus);
 
         Timer timer = new Timer();
-        int delay = 4000;
+        int delay = durationTime;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 setStepRate(120);
+            }
+        }, delay);
+    }
+
+    public void invincibilityBonusReaction(int durationTime) {
+        isInvencible = true;
+        Timer timer = new Timer();
+        int delay = durationTime;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                isInvencible = false;
+            }
+        }, delay);
+    }
+
+    public void shortTraceBonusReaction(int traceSize, int durationTime){
+        isShorted = true;
+
+        while(traces.size() != traceSize){
+            Trace trace = traces.getLast();
+            trace.removePositionInGrid(trace.getX(),trace.getY());
+            traces.removeLast();
+        }
+        traces.getLast().setPreviousObject(null);
+
+        Timer timer = new Timer();
+        int delay = durationTime;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                isShorted = false;
             }
         }, delay);
     }
@@ -227,11 +261,12 @@ public abstract class Player extends TraceableObject {
 
         int difference = Math.abs(this_angle - other_angle);
 
+        if(isInvencible) return;
+
         if(difference == 180){ //eles estão batendo de frente um para o outro
             Game.draw();
         }else{
             Game.win(this);
         }
     }
-
 }
