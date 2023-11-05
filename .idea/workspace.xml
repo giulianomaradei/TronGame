@@ -6,30 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36a4038-3db1-4812-9bfd-1a1c1493fa24" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/ShortTraceBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Bonus/Bonus1.0.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Bonus/ShortTraceBonus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Collidable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/TrailBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/TrailBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/Bonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/TimedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Contracts/TimedBonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/RenderThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/RenderThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Contracts/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/SceneManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/DashPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/DashPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/ConcretePlayers/JumpPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/JumpPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/PlayersInputController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Trace.java" afterDir="false" />
-    </list>
+    <list default="true" id="b36a4038-3db1-4812-9bfd-1a1c1493fa24" name="Changes" comment="first" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
