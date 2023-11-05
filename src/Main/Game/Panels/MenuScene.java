@@ -19,7 +19,7 @@ public class MenuScene extends Scene {
         super(sceneManager);
         startButton();
         menuBackground();
-        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wa");
+        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
     }
 
     public void menuBackground(){

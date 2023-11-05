@@ -22,7 +22,7 @@ public class SceneManager {
         changeScene(new MenuScene(this));
     }
 
-    public void showSelectionScene(){changeScene(new SelectCharScene(this));}
+    public void showSelectionScene(){changeScene(new SelectCharScene(this, gameFrame));}
 
     public void showGameplay() {
         changeScene(new GameScene(this, gameFrame));
