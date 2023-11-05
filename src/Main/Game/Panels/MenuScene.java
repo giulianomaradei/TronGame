@@ -26,11 +26,6 @@ public class MenuScene extends Scene {
         setBackground(black);
         setLayout(new BorderLayout());
         try {
-            /*BufferedImage titleImg = ImageIO.read(new File("resources/GUI/lightCycle.png"));
-            Image scaledTitle = titleImg.getScaledInstance(170,26, Image.SCALE_SMOOTH); //Modifico a escala do botão
-            ImageIcon menuTitleImg = new ImageIcon(scaledTitle);
-            JLabel titleMenu = new JLabel(menuTitleImg); */
-
             BufferedImage backgroundImg = ImageIO.read(new File("resources/GUI/menu_background.jpg"));
             ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
             JLabel backgroundMenu = new JLabel(menuBackgroundImg);
@@ -40,7 +35,6 @@ public class MenuScene extends Scene {
         catch(IOException e){
             e.printStackTrace();
         }
-        this.title();
     }
 
     private void startButton(){
@@ -76,13 +70,6 @@ public class MenuScene extends Scene {
     public void exitButton(){
 
     }
-
-    private void title(){
-/*        JLabel titleLabel = new JLabel("Tron");
-        titleLabel.setForeground(Color.RED);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
-        add(titleLabel, BorderLayout.EAST);
-*/    }
 
     @Override
     protected void paintComponent(Graphics g) {
