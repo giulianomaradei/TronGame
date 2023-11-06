@@ -1,6 +1,13 @@
-package Main.Game.Scenes.Concrete;
+package Main.Game;
 
-import Main.Game.Scenes.Contracts.Scene;
+import Main.Game.Panels.GameScene;
+import Main.Game.Panels.MenuScene;
+import Main.Game.Panels.Scene;
+import Main.Game.Panels.SelectCharScene;
+
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 
 public class SceneManager {
     private GameFrame gameFrame;
@@ -13,6 +20,8 @@ public class SceneManager {
     public void showMenu() {
         changeScene(new MenuScene(this));
     }
+
+    public void showSelectionScene(){changeScene(new SelectCharScene(this, gameFrame));}
 
     public void showGameplay() {
         changeScene(new GameScene(this, gameFrame));
@@ -32,5 +41,74 @@ public class SceneManager {
         gameFrame.revalidate();
         gameFrame.repaint();
         gameFrame.requestFocus();
+    }
+
+    public static class SoundHandler{
+        private static Clip music;
+        private static Clip sound;
+        private static Clip timerSound;
+        private static Clip chooseSound;
+        public static void RunMusic(String path){
+            try {
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
+                music = AudioSystem.getClip();
+                music.open(audio);
+                music.loop(Clip.LOOP_CONTINUOUSLY);
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void RunSound(String path){
+            try {
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File(path));
+                sound = AudioSystem.getClip();
+                sound.open(audio);
+                sound.start();
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void RunTimerSound(){
+            try {
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/timerSoundFx.wav"));
+                timerSound = AudioSystem.getClip();
+                timerSound.open(audio);
+                timerSound.start();
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void RunChooseSound(){
+            try {
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/chooseSoundFx.wav"));
+                chooseSound = AudioSystem.getClip();
+                chooseSound.open(audio);
+                chooseSound.start();
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        }
+        public static void StopMusic(){
+            music.stop();
+        }
     }
 }

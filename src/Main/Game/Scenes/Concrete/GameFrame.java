@@ -13,6 +13,7 @@ public class GameFrame extends JFrame {
         setTitle("Meu Jogo");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         // Define o tamanho da janela
