@@ -10,12 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/resources/GUI/EsmeraldaTit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/GUI/RubyTit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/GUI/SafiraaTit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/GUI/player1Select.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/GUI/Moto2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/GUI/Moto3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/GUI/playButton_notColored.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/chooseSoundFx.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/menuFont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/selectSoundFx.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/timerSoundFx.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/GUI/player10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/MenuScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Panels/SelectCharScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/SceneManager.java" afterDir="false" />
@@ -50,35 +55,28 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 7
-}</component>
   <component name="ProjectId" id="2W1ZGGaSaoROfKZtYJzAXYRy5P5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "selectionScene",
-    "last_opened_file_path": "/home/mario/IdeaProjects/TronGame/resources/GUI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;selectionScene&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mario/IdeaProjects/TronGame/resources/GUI&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -87,6 +85,11 @@
       <recent name="$PROJECT_DIR$/resources/GUI" />
       <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/out" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projetos\JavaPOO\TronGame\resources" />
+      <recent name="C:\Projetos\JavaPOO\TronGame\resources\GUI" />
+      <recent name="C:\Projetos\JavaPOO\TronGame\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Main.Game.Panels" />
@@ -110,10 +113,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695901950468</updated>
-      <workItem from="1699122262969" duration="2960000" />
-      <workItem from="1699197357196" duration="2780000" />
-      <workItem from="1699200550853" duration="3648000" />
-      <workItem from="1699218220370" duration="3920000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
@@ -124,9 +123,6 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="RECENT_FILTERS">
@@ -162,5 +158,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
     <option name="LAST_COMMIT_MESSAGE" value="first" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TronGame$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1699063995637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

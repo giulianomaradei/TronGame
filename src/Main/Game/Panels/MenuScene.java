@@ -6,6 +6,7 @@ import Main.Game.SceneManager;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.File;
 import java.awt.image.BufferedImage;
@@ -14,29 +15,49 @@ import java.io.IOException;
 import static java.awt.Color.black;
 
 public class MenuScene extends Scene {
+    private BufferedImage backgroundImg;
+    private JLabel titleText = new JLabel();
 
     public MenuScene(SceneManager sceneManager) {
         super(sceneManager);
         startButton();
         menuBackground();
+        title();
         SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
     }
 
-    public void menuBackground(){
+    private void menuBackground(){
         setBackground(black);
         setLayout(new BorderLayout());
+
         try {
-            BufferedImage backgroundImg = ImageIO.read(new File("resources/GUI/menu_background.jpg"));
-            ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
-            JLabel backgroundMenu = new JLabel(menuBackgroundImg);
-            backgroundMenu.setIcon(menuBackgroundImg);
-            add(backgroundMenu, BorderLayout.CENTER);
+            backgroundImg = ImageIO.read(new File("resources/GUI/menu_background.jpg"));
         }
         catch(IOException e){
             e.printStackTrace();
         }
+
+        ImageIcon menuBackgroundImg = new ImageIcon(backgroundImg);
+        JLabel backgroundMenu = new JLabel(menuBackgroundImg);
+        add(backgroundMenu);
     }
 
+    private void title(){
+        titleText.setLayout(new BorderLayout());
+
+        try {
+            BufferedImage titleImage = ImageIO.read(new File("src/Res/titleGame.png"));
+            ImageIcon titleIcon = new ImageIcon(titleImage);
+            titleText = new JLabel(titleIcon);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
+        titleText.setSize(50,50);
+        titleText.setBorder(new EmptyBorder(50,0,0,0));
+        add(titleText, BorderLayout.NORTH);
+    }
     private void startButton(){
         try {
             BufferedImage buttonIcon = ImageIO.read(new File("src/Res/play_button.png"));
@@ -53,11 +74,11 @@ public class MenuScene extends Scene {
 
             Insets insets = this.getInsets();
             Dimension size = startButton.getPreferredSize();
-            startButton.setBounds(325 + insets.left, 500 + insets.top,
+            startButton.setBounds(320 + insets.left, 500 + insets.top,
                     size.width, size.height);
 
             startButton.addActionListener(e -> {
-                //this.sceneManager.showGameplay();
+                SceneManager.SoundHandler.RunTimerSound();
                 this.sceneManager.showSelectionScene();
             });
 
