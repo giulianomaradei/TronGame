@@ -1,6 +1,5 @@
 package Main.Game.Bonus;
 
-import Main.Game.Bonus.Concrete.InvincibilityBonus;
 import Main.Game.Bonus.Concrete.ShortTraceBonus;
 import Main.Game.Bonus.Concrete.SpeedBonus;
 import Main.Game.Bonus.Concrete.TrailBonus;
@@ -8,7 +7,6 @@ import Main.Game.Bonus.Contracts.Bonus;
 import Main.Game.Game;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,7 +18,6 @@ public class BonusGenerator{
 
     private TrailBonus trailBonus;
     private SpeedBonus speedBonus;
-    private InvincibilityBonus invincibilityBonus;
     private ShortTraceBonus shortTraceBonus;
 
     public BonusGenerator() {
@@ -42,7 +39,6 @@ public class BonusGenerator{
     private void bonusesInit(){
         trailBonus = new TrailBonus(0, 0);
         speedBonus = new SpeedBonus( 0, 0 );
-        invincibilityBonus = new InvincibilityBonus(0, 0);
         shortTraceBonus = new ShortTraceBonus(0, 0);
     }
 
@@ -62,13 +58,13 @@ public class BonusGenerator{
     private void spawnRandomBonus(){
         int rouletteValue = new Random().nextInt(100);
 
-        if(rouletteValue < 100){
-            setActiveBonus(invincibilityBonus);
+        if(rouletteValue < 60){
+            setActiveBonus(trailBonus);
             //setActiveBonus(trailBonus);
-        } else if (rouletteValue < 80){
+        } else if (rouletteValue < 90){
             setActiveBonus(speedBonus);
         }else{
-            setActiveBonus(invincibilityBonus);
+            setActiveBonus(shortTraceBonus);
         }
     }
 

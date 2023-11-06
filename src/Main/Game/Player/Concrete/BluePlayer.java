@@ -2,11 +2,11 @@ package Main.Game.Player.Concrete;
 
 import Main.Game.Player.Contracts.Player;
 
-public class DashPlayer extends Player {
+public class BluePlayer extends Player {
 
-    public DashPlayer(int x, int y){
+    public BluePlayer(int x, int y){
         super(x, y);
-        setSprite("DashPlayer");
+        setSprite("JumpPlayer");
     }
 
     public void reaction(Player player){

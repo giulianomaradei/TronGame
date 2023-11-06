@@ -5,9 +5,12 @@ import Main.Game.SceneManager;
 import Main.Game.Scenes.Contracts.Scene;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.SortedMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,7 +18,9 @@ import java.util.TimerTask;
 public class GameScene extends Scene {
 
     private GameFrame gameFrame;
+    private static boolean gameOver = false;
     private BufferedImage background;
+    private static JLabel gameOverText = new JLabel();
     public GameScene(SceneManager sceneManager, GameFrame gameFrame) {
         super(sceneManager);
         this.gameFrame = gameFrame;
@@ -29,10 +34,45 @@ public class GameScene extends Scene {
         initMusic();
         //setStepActions();
         setInputListeners();
+        initText();
         Game.start();
 
         RenderThread renderThread = new RenderThread(gameFrame);
         renderThread.start();
+    }
+
+    private void initText(){
+        setBackground(Color.BLACK);
+
+        Font fontePersonalizada = null;
+        try {
+            fontePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("resources/menuFont.ttf"));
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        fontePersonalizada = fontePersonalizada.deriveFont(24f);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(fontePersonalizada);
+
+        gameOverText.setBorder(new EmptyBorder(280, 0,0,0));
+        gameOverText.setForeground(Color.WHITE);
+        gameOverText.setFont(fontePersonalizada.deriveFont(Font.PLAIN, 32));
+        gameOverText.setLocation(400,600);
+        gameOverText.setSize(300, 300);
+        gameOverText.setEnabled(true);
+
+        this.add(gameOverText);
+    }
+    public static void setGameOver(boolean flag){
+        gameOver = flag;
+    }
+    public static void setGameOverText(String player){
+        gameOverText.setText(player);
+        gameOverText.setVisible(true);
     }
 
     private void setInputListeners() {
@@ -84,11 +124,13 @@ public class GameScene extends Scene {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Chama o método da classe pai
 
-        g.drawImage(background, 0, 0, null);
+        if(!gameOver) {
+            g.drawImage(background, 0, 0, null);
 
-        Game.bonusGenerator.renderActiveBonus(g);
-        Game.player1.render(g);
-        Game.player2.render(g);
+            Game.bonusGenerator.renderActiveBonus(g);
+            Game.player1.render(g);
+            Game.player2.render(g);
+        }
     }
 
     private void initMusic(){

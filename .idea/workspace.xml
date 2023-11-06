@@ -10,21 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/resources/Sounds/GameMusic.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_2023_23_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_2023_23_29__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_10_2023_09_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_10_2023_09_32__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/GUI/playButton_notColored.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/DashPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/JumpPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/MenuScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/SelectCharScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/SelectCharScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/AdagioForTRON.wav" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Sounds/AdagioForTRON.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/EndOfLine.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/exit_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/menu_background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/menu_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/menu_background2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/play_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GUI/play_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Res/titleGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GUI/titleGame.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="selectionScene" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,30 +63,32 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2W1ZGGaSaoROfKZtYJzAXYRy5P5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "bugfix/playerHabilities",
-    "last_opened_file_path": "/home/mario/IdeaProjects/TronGame/resources/Sounds",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;bugfix/playerHabilities&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mario/IdeaProjects/TronGame/resources/Sounds&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -173,5 +177,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
     <option name="LAST_COMMIT_MESSAGE" value="first" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

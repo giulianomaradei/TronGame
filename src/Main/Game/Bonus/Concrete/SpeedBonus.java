@@ -8,7 +8,7 @@ public class SpeedBonus extends TimedBonus {
 
 
     public SpeedBonus(int x, int y) {
-        super(x, y, 3);
+        super(x, y, 3000);
         setSprite("SpeedBonus");
     }
 

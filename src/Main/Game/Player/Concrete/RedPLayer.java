@@ -2,11 +2,11 @@ package Main.Game.Player.Concrete;
 
 import Main.Game.Player.Contracts.Player;
 
-public class JumpPlayer extends Player {
+public class RedPLayer extends Player {
 
-    public JumpPlayer(int x, int y){
+    public RedPLayer(int x, int y){
         super(x, y);
-        setSprite("JumpPlayer");
+        setSprite("TeleportPlayer");
     }
     public void reaction(Player player){
 

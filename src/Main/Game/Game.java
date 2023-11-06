@@ -1,13 +1,12 @@
 package Main.Game;
 
 import Main.Game.Bonus.BonusGenerator;
-import Main.Game.Panels.SelectCharScene;
-import Main.Game.SceneManager;
+import Main.Game.Player.Concrete.GreenPlayer;
 import Main.Game.Scenes.Concrete.GameFrame;
-import Main.Game.Scenes.Contracts.Scene;
+import Main.Game.Scenes.Concrete.GameScene;
 import Main.GameObject;
-import Main.Game.Player.Concrete.DashPlayer;
-import Main.Game.Player.Concrete.JumpPlayer;
+import Main.Game.Player.Concrete.BluePlayer;
+import Main.Game.Player.Concrete.RedPLayer;
 import Main.Game.Player.Contracts.Player;
 
 import javax.imageio.ImageIO;
@@ -89,53 +88,69 @@ public class Game {
     }
 
     public static void draw() {
+        System.out.println("empate");
     }
 
     public static void win(Player player) {
 
         if(player == player1){
-            System.out.println("Player 1 ganhou!");
+            GameScene.setGameOverText("Player 1 Wins!");
 
         } else {
-            System.out.println("Player 2 ganhou!");
+            System.out.println("Player 2 Wins!");
+        }
+
+        GameScene.setGameOver(true);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         System.exit(0);
     }
 
     public static void lose(Player player) {
         if(player == player1){
-            System.out.println("Player 2 Ganhou!");
+            GameScene.setGameOverText("Player 2 Wins!");
 
         } else {
-            System.out.println("Player 1 Ganhou!");
+            GameScene.setGameOverText("Player 1 Wins!");
+        }
+
+        GameScene.setGameOver(true);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         System.exit(0);
     }
 
     public static void start() {
-        Main.Game.Panels.SelectCharScene selectCharScene = SceneManager.getSelectionScene();
+        Main.Game.Panels.SelectCharScene selectCharScene = Main.Game.SceneManager.getSelectionScene();
         switch (selectCharScene.getPlayer1Id()){
             case 1:
-                player1 = new JumpPlayer(760, 560);
+                player1 = new BluePlayer(760, 560);
                 break;
             case 2:
-                player1 = new JumpPlayer(760, 560);
+                player1 = new RedPLayer(760, 560);
                 break;
             case 3:
-                player1 = new DashPlayer(760, 560);
+                player1 = new GreenPlayer(760, 560);
                 break;
         }
 
         switch (selectCharScene.getPlayer2Id()){
             case 1:
-                player2 = new JumpPlayer(20, 560);
+                player2 = new BluePlayer(20, 560);
                 break;
             case 2:
                 //Devera ser o vermelho
-                player2 = new JumpPlayer(20, 560);
+                player2 = new RedPLayer(20, 560);
                 break;
             case 3:
-                player2 = new DashPlayer(20, 560);
+                player2 = new GreenPlayer(20, 560);
                 break;
         }
         bonusGenerator = new BonusGenerator();

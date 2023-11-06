@@ -19,6 +19,7 @@ public abstract class Player extends TraceableObject {
         super(x, y);
         setStepRate(120);
     }
+    private boolean isDead = false;
     private double skillCooldown;
     private int currentHorizontalSpeed = 0;
     private int currentVerticalSpeed = -1;
@@ -176,8 +177,10 @@ public abstract class Player extends TraceableObject {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                move();
-                moveTraces();
+                if(!isDead) {
+                    move();
+                    moveTraces();
+                }
             }
         }, 0, interval);
     }
@@ -266,6 +269,7 @@ public abstract class Player extends TraceableObject {
         if(difference == 180){ //eles estão batendo de frente um para o outro
             Game.draw();
         }else{
+            this.isDead = true;
             Game.win(this);
         }
     }
