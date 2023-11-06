@@ -23,7 +23,7 @@ public class MenuScene extends Scene {
         startButton();
         menuBackground();
         title();
-        SceneManager.SoundHandler.RunMusic("src/Res/AdagioForTRON.wav");
+        SceneManager.SoundHandler.RunMusic("resources/Sounds/AdagioForTRON.wav");
     }
 
     private void menuBackground(){
@@ -46,7 +46,7 @@ public class MenuScene extends Scene {
         titleText.setLayout(new BorderLayout());
 
         try {
-            BufferedImage titleImage = ImageIO.read(new File("src/Res/titleGame.png"));
+            BufferedImage titleImage = ImageIO.read(new File("resources/GUI/titleGame.png"));
             ImageIcon titleIcon = new ImageIcon(titleImage);
             titleText = new JLabel(titleIcon);
         }
@@ -60,7 +60,7 @@ public class MenuScene extends Scene {
     }
     private void startButton(){
         try {
-            BufferedImage buttonIcon = ImageIO.read(new File("src/Res/play_button.png"));
+            BufferedImage buttonIcon = ImageIO.read(new File("resources/GUI/play_button.png"));
             int newWidth = 160; // Coloco a largura que eu quero da imagem no botão
             int newHeight = 75;  //Coloco altura
             Image scaledImage = buttonIcon.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH); //Modifico a escala do botão
@@ -86,10 +86,6 @@ public class MenuScene extends Scene {
         catch(IOException e){
             e.printStackTrace();
         }
-    }
-
-    public void exitButton(){
-
     }
 
     @Override

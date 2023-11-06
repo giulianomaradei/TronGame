@@ -9,9 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="Refatoração de alguns arquivos, implementar futuramente o ultimo player, ou deixar uma unica classe player e trocar a sprite quando o player for selecionado">
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/resources/Sounds/GameMusic.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GUI/playButton_notColored.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/MenuScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/MenuScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/SelectCharScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/SelectCharScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/AdagioForTRON.wav" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Sounds/AdagioForTRON.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/EndOfLine.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/exit_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/menu_background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/menu_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/menu_background2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/play_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GUI/play_button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Res/titleGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GUI/titleGame.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +42,6 @@
       </list>
     </option>
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="selectionScene" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -46,10 +56,12 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2W1ZGGaSaoROfKZtYJzAXYRy5P5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,28 +71,33 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/giulianoubunto/IdeaProjects/TronGame",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "bugfix/playerHabilities",
+    "last_opened_file_path": "/home/mario/IdeaProjects/TronGame/resources/Sounds",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="Main.Game.Scenes.Concrete" />
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/Sounds" />
+      <recent name="$PROJECT_DIR$/resources/GUI" />
       <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/out" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projetos\JavaPOO\TronGame\resources\Player\TeleportPlayer" />
-      <recent name="C:\Projetos\JavaPOO\TronGame\resources\Player\JumpPlayer" />
-      <recent name="C:\Projetos\JavaPOO\TronGame\resources\Player\DashPlayer" />
-      <recent name="C:\Projetos\JavaPOO\TronGame\resources\Sounds" />
+      <recent name="$PROJECT_DIR$/resources/GUI" />
+      <recent name="$PROJECT_DIR$/resources/Sounds" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Main.Game.Panels" />
@@ -104,6 +121,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695901950468</updated>
+      <workItem from="1699122262969" duration="2960000" />
+      <workItem from="1699197357196" duration="2780000" />
+      <workItem from="1699200550853" duration="3648000" />
+      <workItem from="1699218220370" duration="3920000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
@@ -112,18 +133,33 @@
       <option name="project" value="LOCAL" />
       <updated>1695902063531</updated>
     </task>
-    <task id="LOCAL-00002" summary="Refatoração de alguns arquivos, implementar futuramente o ultimo player, ou deixar uma unica classe player e trocar a sprite quando o player for selecionado">
-      <option name="closed" value="true" />
-      <created>1699237444866</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1699237444866</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/menuStyle" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -135,28 +171,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Titulo arrumado, inserido alguns efeitos pra ter feedback na seleção de persoangem e foi adicionado um contador pra iniciar o jogo." />
     <MESSAGE value="first" />
-    <MESSAGE value="Refatoração de alguns arquivos, implementar futuramente o ultimo player, ou deixar uma unica classe player e trocar a sprite quando o player for selecionado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração de alguns arquivos, implementar futuramente o ultimo player, ou deixar uma unica classe player e trocar a sprite quando o player for selecionado" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Player/Trace.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TronGame$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1699235429258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
 </project>

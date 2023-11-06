@@ -42,9 +42,6 @@ public class SelectCharScene extends Scene {
     private BufferedImage rubyBImg;
     private BufferedImage selectBImageP1Selected;
     private BufferedImage selectBImageP2Selected;
-    private BufferedImage playButtonColored;
-    private BufferedImage playButtonNotColored;
-    private JButton playButton = new JButton();
 
     public SelectCharScene(SceneManager sceneManager, GameFrame gameFrame) {
         super(sceneManager);
@@ -72,8 +69,6 @@ public class SelectCharScene extends Scene {
             esmeraldaBImg = ImageIO.read(new File("resources/GUI/Moto3.png"));
             selectBImageP1Selected = ImageIO.read(new File("resources/GUI/player1Select.png"));
             selectBImageP2Selected = ImageIO.read(new File("resources/GUI/player2Select.png"));
-            playButtonNotColored = ImageIO.read(new File("resources/GUI/playButton_notColored.png"));
-            playButtonColored = ImageIO.read(new File("src/Res/play_button.png"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);

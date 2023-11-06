@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.SortedMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,7 +25,8 @@ public class GameScene extends Scene {
         }catch (Exception e){
             System.out.println(e);
         }
-
+        SceneManager.SoundHandler.StopMusic();
+        initMusic();
         //setStepActions();
         setInputListeners();
         Game.start();
@@ -90,7 +92,7 @@ public class GameScene extends Scene {
     }
 
     private void initMusic(){
-        SceneManager.SoundHandler.RunMusic("");
+        SceneManager.SoundHandler.RunMusic("resources/Sounds/GameMusic.wav");
     }
 
     public void render(){
