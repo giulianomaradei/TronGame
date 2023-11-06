@@ -116,26 +116,26 @@ public class Game {
         Main.Game.Panels.SelectCharScene selectCharScene = SceneManager.getSelectionScene();
         switch (selectCharScene.getPlayer1Id()){
             case 1:
-                player1 = new JumpPlayer(0, 580);
+                player2 = new JumpPlayer(760, 560);
                 break;
             case 2:
-                //Devera ser o vermelho
-                player1 = new JumpPlayer(0, 580);
+                player2 = new JumpPlayer(760, 560);
                 break;
             case 3:
-                player1 = new DashPlayer(0, 580);
+                player2 = new DashPlayer(760, 560);
                 break;
         }
 
         switch (selectCharScene.getPlayer2Id()){
             case 1:
-                player2 = new JumpPlayer(780, 580);
+                player1 = new JumpPlayer(20, 560);
                 break;
             case 2:
-                player2 = new JumpPlayer(780, 580);
+                //Devera ser o vermelho
+                player1 = new JumpPlayer(20, 560);
                 break;
             case 3:
-                player2 = new DashPlayer(780, 580);
+                player1 = new DashPlayer(20, 560);
                 break;
         }
         bonusGenerator = new BonusGenerator();
