@@ -1,7 +1,7 @@
 package Main.Game.Scenes.Contracts;
 
 import Main.Game.Game;
-import Main.Game.Scenes.Concrete.SceneManager;
+import Main.Game.SceneManager;
 
 import javax.swing.*;
 import java.awt.*;

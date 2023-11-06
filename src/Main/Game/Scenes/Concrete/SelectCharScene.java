@@ -1,7 +1,8 @@
 package Main.Game.Panels;
 
-import Main.Game.GameFrame;
 import Main.Game.SceneManager;
+import Main.Game.Scenes.Concrete.GameFrame;
+import Main.Game.Scenes.Contracts.Scene;
 
 import javax.imageio.ImageIO;
 import javax.print.attribute.standard.JobKOctets;
@@ -51,6 +52,7 @@ public class SelectCharScene extends Scene {
         setBackground(black);
         setLayout(null);
         initSources();
+        initText();
         characterImages();
         descriptionCharacters();
         selectImages();
@@ -73,35 +75,43 @@ public class SelectCharScene extends Scene {
             playButtonNotColored = ImageIO.read(new File("resources/GUI/playButton_notColored.png"));
             playButtonColored = ImageIO.read(new File("src/Res/play_button.png"));
 
-            Font fontePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("resources/menuFont.ttf"));
-            fontePersonalizada = fontePersonalizada.deriveFont(24f);
-
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(fontePersonalizada);
-
-            counterText.setForeground(Color.ORANGE);
-            counterText.setFont(fontePersonalizada.deriveFont(Font.PLAIN, 40));
-            counterText.setLocation(400,400);
-            counterText.setSize(300, 300);
-
-            controlsText.setForeground(Color.white);
-            controlsText.setFont(fontePersonalizada.deriveFont(Font.PLAIN, 16));
-            controlsText.setLocation(500, 400);
-            controlsText.setSize(300, 300);
-
-            controlsText.setText("<html>WASD - movimento player 1<br><br>" +
-                    "Up/Down/Left/Right - movimento player 2<html>");
-
-            this.add(controlsText);
-            this.add(counterText);
-
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private void initText() {
+
+        Font fontePersonalizada = null;
+        try {
+            fontePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("resources/menuFont.ttf"));
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        fontePersonalizada = fontePersonalizada.deriveFont(24f);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(fontePersonalizada);
+
+        counterText.setForeground(Color.ORANGE);
+        counterText.setFont(fontePersonalizada.deriveFont(Font.PLAIN, 40));
+        counterText.setLocation(400,400);
+        counterText.setSize(300, 300);
+
+        controlsText.setForeground(Color.white);
+        controlsText.setFont(fontePersonalizada.deriveFont(Font.PLAIN, 16));
+        controlsText.setLocation(500, 400);
+        controlsText.setSize(300, 300);
+
+        controlsText.setText("<html>WASD - movimento player 1<br><br>" +
+                "Up/Down/Left/Right - movimento player 2<html>");
+
+        this.add(controlsText);
+        this.add(counterText);
+    }
     private void characterImages() {
             int newWidth = 128; // Coloco a largura que eu quero da imagem
             int newHeight = 128;  //Coloco altura
@@ -271,7 +281,7 @@ public class SelectCharScene extends Scene {
                         break;
 
                     case KeyEvent.VK_ENTER:
-                        SceneManager.SoundHandler.RunSound("resources/selectSoundFx.wav");
+                        SceneManager.SoundHandler.RunSound("resources/Sounds/selectSoundFx.wav");
                         if (!player1Done) {
                             player1Done = true;
                             Image selectImgScale1 = selectBImageP1Selected.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
@@ -286,7 +296,7 @@ public class SelectCharScene extends Scene {
                         break;
 
                     case KeyEvent.VK_SPACE:
-                        SceneManager.SoundHandler.RunSound("resources/selectSoundFx.wav");
+                        SceneManager.SoundHandler.RunSound("resources/Sounds/selectSoundFx.wav");
                         if (!player2Done) {
                             player2Done = true;
                             Image selectImgScale2 = selectBImageP2Selected.getScaledInstance(64, 64, Image.SCALE_SMOOTH);

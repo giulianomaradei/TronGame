@@ -1,9 +1,10 @@
 package Main.Game;
 
-import Main.Game.Panels.GameScene;
-import Main.Game.Panels.MenuScene;
-import Main.Game.Panels.Scene;
 import Main.Game.Panels.SelectCharScene;
+import Main.Game.Scenes.Concrete.GameFrame;
+import Main.Game.Scenes.Concrete.GameScene;
+import Main.Game.Scenes.Concrete.MenuScene;
+import Main.Game.Scenes.Contracts.Scene;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class SceneManager {
     private GameFrame gameFrame;
     private Scene currentScene;
+    private static SelectCharScene selectionScene;
 
     public SceneManager(GameFrame gameFrame) {
         this.gameFrame = gameFrame;
@@ -21,7 +23,7 @@ public class SceneManager {
         changeScene(new MenuScene(this));
     }
 
-    public void showSelectionScene(){changeScene(new SelectCharScene(this, gameFrame));}
+    public void showSelectionScene(){changeScene(selectionScene = new Main.Game.Panels.SelectCharScene(this, gameFrame));}
 
     public void showGameplay() {
         changeScene(new GameScene(this, gameFrame));
@@ -29,6 +31,10 @@ public class SceneManager {
 
     public void showEndScreen() {
         // Implemente a lógica para alternar para a tela final de maneira semelhante.
+    }
+
+    public static SelectCharScene getSelectionScene() {
+        return selectionScene;
     }
 
     private void changeScene(Scene scene){
@@ -80,7 +86,7 @@ public class SceneManager {
 
         public static void RunTimerSound(){
             try {
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/timerSoundFx.wav"));
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/Sounds/timerSoundFx.wav"));
                 timerSound = AudioSystem.getClip();
                 timerSound.open(audio);
                 timerSound.start();
@@ -95,7 +101,7 @@ public class SceneManager {
 
         public static void RunChooseSound(){
             try {
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/chooseSoundFx.wav"));
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("resources/Sounds/chooseSoundFx.wav"));
                 chooseSound = AudioSystem.getClip();
                 chooseSound.open(audio);
                 chooseSound.start();

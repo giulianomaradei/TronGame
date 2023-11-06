@@ -1,7 +1,10 @@
 package Main.Game;
 
 import Main.Game.Bonus.BonusGenerator;
+import Main.Game.Panels.SelectCharScene;
+import Main.Game.SceneManager;
 import Main.Game.Scenes.Concrete.GameFrame;
+import Main.Game.Scenes.Contracts.Scene;
 import Main.GameObject;
 import Main.Game.Player.Concrete.DashPlayer;
 import Main.Game.Player.Concrete.JumpPlayer;
@@ -32,17 +35,17 @@ public class Game {
         try{
             BufferedImage image;
 
-            BufferedImage DashPlayer = ImageIO.read(new File("resources/Player/DashPlayer/Bike.png"));
+            BufferedImage DashPlayer = ImageIO.read(new File("resources/Player/DashPlayer/greenMoto.png"));
             BufferedImage DashPlayerStraightTrace = ImageIO.read(new File("resources/Player/DashPlayer/StraightTrace.png"));
             BufferedImage DashPlayerCurvedTrace = ImageIO.read(new File("resources/Player/DashPlayer/CurvedTrace.png"));
             BufferedImage DashPlayerLastTrace = ImageIO.read(new File("resources/Player/DashPlayer/LastTrace.png"));
 
-            BufferedImage JumpPlayer = ImageIO.read(new File("resources/Player/JumpPlayer/Bike.png"));
+            BufferedImage JumpPlayer = ImageIO.read(new File("resources/Player/JumpPlayer/blueMoto.png"));
             BufferedImage JumpPlayerStraightTrace = ImageIO.read(new File("resources/Player/JumpPlayer/StraightTrace.png"));
             BufferedImage JumpPlayerCurvedTrace = ImageIO.read(new File("resources/Player/JumpPlayer/CurvedTrace.png"));
             BufferedImage JumpPlayerLastTrace = ImageIO.read(new File("resources/Player/JumpPlayer/LastTrace.png"));
 
-            BufferedImage TeleportPlayer = ImageIO.read(new File("resources/Player/TeleportPlayer/Bike.png"));
+            BufferedImage TeleportPlayer = ImageIO.read(new File("resources/Player/TeleportPlayer/redMoto.png"));
             BufferedImage TeleportPlayerStraightTrace = ImageIO.read(new File("resources/Player/TeleportPlayer/StraightTrace.png"));
             BufferedImage TeleportPlayerCurvedTrace = ImageIO.read(new File("resources/Player/TeleportPlayer/CurvedTrace.png"));
             BufferedImage TeleportPlayerLastTrace = ImageIO.read(new File("resources/Player/TeleportPlayer/LastTrace.png"));
@@ -89,6 +92,7 @@ public class Game {
     }
 
     public static void win(Player player) {
+
         if(player == player1){
             System.out.println("Player 1 ganhou!");
 
@@ -109,8 +113,31 @@ public class Game {
     }
 
     public static void start() {
-        player1 = new DashPlayer(400, 400);
-        player2 = new JumpPlayer(300, 300);
+        Main.Game.Panels.SelectCharScene selectCharScene = SceneManager.getSelectionScene();
+        switch (selectCharScene.getPlayer1Id()){
+            case 1:
+                player1 = new JumpPlayer(0, 580);
+                break;
+            case 2:
+                //Devera ser o vermelho
+                player1 = new JumpPlayer(0, 580);
+                break;
+            case 3:
+                player1 = new DashPlayer(0, 580);
+                break;
+        }
+
+        switch (selectCharScene.getPlayer2Id()){
+            case 1:
+                player2 = new JumpPlayer(780, 580);
+                break;
+            case 2:
+                player2 = new JumpPlayer(780, 580);
+                break;
+            case 3:
+                player2 = new DashPlayer(780, 580);
+                break;
+        }
         bonusGenerator = new BonusGenerator();
     }
 

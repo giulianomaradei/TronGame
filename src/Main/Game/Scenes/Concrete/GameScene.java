@@ -1,6 +1,7 @@
 package Main.Game.Scenes.Concrete;
 
 import Main.Game.Game;
+import Main.Game.SceneManager;
 import Main.Game.Scenes.Contracts.Scene;
 
 import javax.imageio.ImageIO;
@@ -86,6 +87,10 @@ public class GameScene extends Scene {
         Game.bonusGenerator.renderActiveBonus(g);
         Game.player1.render(g);
         Game.player2.render(g);
+    }
+
+    private void initMusic(){
+        SceneManager.SoundHandler.RunMusic("");
     }
 
     public void render(){

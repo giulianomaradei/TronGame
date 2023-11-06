@@ -1,5 +1,6 @@
 package Main.Game.Scenes.Concrete;
 
+import Main.Game.SceneManager;
 import Main.Game.Scenes.Contracts.Scene;
 
 import javax.imageio.ImageIO;
