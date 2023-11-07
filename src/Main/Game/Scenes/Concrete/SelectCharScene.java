@@ -309,19 +309,4 @@ public class SelectCharScene extends Scene {
         }
         });
     }
-
-    @Override
-    public void render() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void handleInput() {
-
-    }
 }

@@ -10,18 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Trace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Contracts/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Contracts/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/TraceableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/TraceableObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

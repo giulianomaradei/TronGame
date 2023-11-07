@@ -13,7 +13,7 @@ import java.util.TimerTask;
 
 public class BonusGenerator{
     private Bonus activeBonus;
-    private int maxRespawnCooldown = 2000;
+    private int maxRespawnCooldown = 2000; //
     private int minRespawnCooldown = 8000;
 
     private TrailBonus trailBonus;
@@ -27,13 +27,13 @@ public class BonusGenerator{
 
     private void scheduleBonusSpawner() {
         Timer timer = new Timer();
-        int delay = ((int)(Math.random() * minRespawnCooldown) + maxRespawnCooldown);
+        int delay = ((int)(Math.random() * minRespawnCooldown) + maxRespawnCooldown); // calcula tempo aleatorio entre 2 e 8 segundos
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 spawnRandomBonus();
             }
-        }, delay);
+        }, delay); // cria o bonus depois do delay
     }
 
     private void bonusesInit(){
@@ -58,13 +58,12 @@ public class BonusGenerator{
     private void spawnRandomBonus(){
         int rouletteValue = new Random().nextInt(100);
 
-        if(rouletteValue < 60){
+        if(rouletteValue < 50){ // 50% de chance de spawnar um bonus de trilha
             setActiveBonus(trailBonus);
-            //setActiveBonus(trailBonus);
-        } else if (rouletteValue < 90){
+        } else if (rouletteValue < 75){ // 25% de chance de spawnar um bonus de velocidade
             setActiveBonus(speedBonus);
         }else{
-            setActiveBonus(shortTraceBonus);
+            setActiveBonus(shortTraceBonus); // 25% de chance de spawnar um bonus de rastro curto
         }
     }
 
@@ -79,7 +78,7 @@ public class BonusGenerator{
         }
     }
 
-    public void activeBonusDeactivation(){
+    public void activeBonusDeactivation(){ // desativa o bonus ativo e "marca" para criar outro
         if(activeBonus != null){
             activeBonus = null;
             scheduleBonusSpawner();
