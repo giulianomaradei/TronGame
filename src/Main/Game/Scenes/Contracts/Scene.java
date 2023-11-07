@@ -17,7 +17,4 @@ public abstract class Scene extends JPanel {
     public Dimension getPreferredSize() {
         return new Dimension(Game.gridWidth, Game.gridHeight);
     }
-    public abstract void render();
-    public abstract void update();
-    public abstract void handleInput();
 }

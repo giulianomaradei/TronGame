@@ -9,11 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="Cores dos players arrumadas, nomes arrumados, Game over funcionando.">
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Trace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Contracts/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Contracts/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/TraceableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/TraceableObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +148,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -160,15 +177,6 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
@@ -178,5 +186,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TronGame$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1699063995637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

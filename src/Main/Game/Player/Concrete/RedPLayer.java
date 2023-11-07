@@ -8,8 +8,4 @@ public class RedPLayer extends Player {
         super(x, y);
         setSprite("TeleportPlayer");
     }
-    public void reaction(Player player){
-
-    }
-
 }

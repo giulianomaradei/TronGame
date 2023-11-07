@@ -1,6 +1,6 @@
 package Main;
 
-abstract public class TraceableObject extends GameObject{
+abstract public class TraceableObject extends GameObject{ // Objetos que podem são "seguidos" player e traces
     private Point lastPosition;
     private int lastAngle = 270, currentAngle = 270;
     public TraceableObject(int x, int y) {

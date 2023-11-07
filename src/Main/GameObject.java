@@ -18,53 +18,41 @@ abstract public class GameObject extends Point implements Collidable, Renderable
         setY(y);
     }
 
-    public void updatePositionInGrid(int x, int y, int new_x, int new_y){
-
-        int i= x / Game.cellSize;
-        int j = y / Game.cellSize;
-
-        int ii = new_x / Game.cellSize;
-        int jj = new_y / Game.cellSize;
-
-        if(ii >= Game.gridWidth || jj >= Game.gridHeight || ii < 0 || jj < 0){
-            return;
-        }
-
-        Game.grid[ii][jj] = Game.grid[i][j];
-        Game.grid[i][j] = null;
-    }
-
     public void setPositionInGrid(int x, int y){
         int i = x / Game.cellSize;
         int j = y / Game.cellSize;
 
-        if(i >= Game.gridWidth || j >= Game.gridHeight || i < 0 || j < 0){
+        if(i >= Game.gridWidth || j >= Game.gridHeight || i < 0 || j < 0){ // Se o objeto estiver fora da grid
             return;
         }
 
-        Game.grid[i][j] = this;
+        Game.grid[i][j] = this; // Define a posição do objeto na grid
     }
 
     public void removePositionInGrid(int x, int y){
         int i = x / Game.cellSize;
         int j = y / Game.cellSize;
 
-        Game.grid[i][j] = null;
+        if(i >= Game.gridWidth || j >= Game.gridHeight || i < 0 || j < 0){ // Se o objeto estiver fora da grid
+            return;
+        }
+
+        Game.grid[i][j] = null; // Remove a posição do objeto na grid
     }
 
     public void setSprite(String spriteName){
-        this.spriteName = spriteName;
+        this.spriteName = spriteName; // Define o nome do sprite
     }
 
     public BufferedImage getSprite(String spriteName){
         return Game.imageCache.get(spriteName);
-    }
+    } // Retorna o sprite do cache
 
     public String getSpriteName(){
         return spriteName;
     }
 
-    public void render(Graphics g){
+    public void render(Graphics g){ // Metodo default para render
         int x = this.getX();
         int y = this.getY();
         BufferedImage sprite = this.getSprite(this.getSpriteName());

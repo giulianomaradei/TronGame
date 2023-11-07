@@ -8,8 +8,4 @@ public class GreenPlayer extends Player {
         super(x, y);
         setSprite("DashPlayer");
     }
-    public void reaction(Player player){
-
-    }
-
 }

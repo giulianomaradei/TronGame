@@ -111,22 +111,6 @@ public class GameScene extends Scene {
         });
     }
 
-    public static boolean isGameOver() {
-        return gameOver;
-    }
-
-    private void setStepActions(){
-        int delay = 0;
-        int interval = 80;
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                gameFrame.repaint();
-                gameFrame.revalidate();
-            }
-        }, delay, interval);
-    };
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Chama o método da classe pai
@@ -143,18 +127,5 @@ public class GameScene extends Scene {
     private void initMusic(){
         SceneManager.SoundHandler.RunMusic("resources/Sounds/GameMusic.wav");
     }
-
-    public void render(){
-
-    }
-
-    public void update(){
-
-    }
-
-    public void handleInput(){
-
-    }
-
 
 }

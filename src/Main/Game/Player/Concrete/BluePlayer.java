@@ -8,9 +8,4 @@ public class BluePlayer extends Player {
         super(x, y);
         setSprite("JumpPlayer");
     }
-
-    public void reaction(Player player){
-
-    }
-    
 }

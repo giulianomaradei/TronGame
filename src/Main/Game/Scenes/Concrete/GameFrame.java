@@ -14,7 +14,7 @@ public class GameFrame extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // Pega o tamanho da tela
 
         // Define o tamanho da janela
         int windowWidth = Game.gridWidth;
