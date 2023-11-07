@@ -9,22 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/GreenPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_11_2023_16_29__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_2023_23_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_2023_23_29__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_10_2023_11_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_10_2023_09_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_31_10_2023_09_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_10_2023_11_50__Changes_.xml" afterDir="false" />
+    <list default="true" id="ef545ae9-40f1-480a-916d-8ab16085c5a1" name="Changes" comment="Cores dos players arrumadas, nomes arrumados, Game over funcionando.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/BonusGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/InvincibilityBonus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Bonus/Concrete/SpeedBonus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/DashPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/BluePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/JumpPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Concrete/RedPLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Player/Contracts/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game/Scenes/Concrete/GameScene.java" afterDir="false" />
     </list>
@@ -129,6 +116,7 @@
       <workItem from="1699197357196" duration="2780000" />
       <workItem from="1699200550853" duration="3648000" />
       <workItem from="1699218220370" duration="3920000" />
+      <workItem from="1699316500699" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1695902063531</created>
@@ -137,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695902063531</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Cores dos players arrumadas, nomes arrumados, Game over funcionando.">
+      <option name="closed" value="true" />
+      <created>1699314784155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699314784155</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +172,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
+    <MESSAGE value="Cores dos players arrumadas, nomes arrumados, Game over funcionando." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cores dos players arrumadas, nomes arrumados, Game over funcionando." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

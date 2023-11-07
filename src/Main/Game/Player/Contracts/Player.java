@@ -161,7 +161,7 @@ public abstract class Player extends TraceableObject {
         int bottomY = new_y + height;
 
         if (new_x < 0 || rightX > Game.gridWidth || new_y < 0 || bottomY > Game.gridHeight) {
-           //Game.lose(this);
+            Game.lose(this);
             canMove = false;
         }
     }

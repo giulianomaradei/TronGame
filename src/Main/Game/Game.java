@@ -88,16 +88,16 @@ public class Game {
     }
 
     public static void draw() {
-        System.out.println("empate");
+        GameScene.setGameOver(true);
+        GameScene.setGameOverText("Draw");
     }
 
     public static void win(Player player) {
 
         if(player == player1){
             GameScene.setGameOverText("Player 1 Wins!");
-
         } else {
-            System.out.println("Player 2 Wins!");
+            GameScene.setGameOverText("Player 2 Wins!");
         }
 
         GameScene.setGameOver(true);
@@ -146,7 +146,6 @@ public class Game {
                 player2 = new BluePlayer(20, 560);
                 break;
             case 2:
-                //Devera ser o vermelho
                 player2 = new RedPLayer(20, 560);
                 break;
             case 3:

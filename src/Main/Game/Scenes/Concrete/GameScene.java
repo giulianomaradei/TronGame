@@ -21,6 +21,7 @@ public class GameScene extends Scene {
     private static boolean gameOver = false;
     private BufferedImage background;
     private static JLabel gameOverText = new JLabel();
+
     public GameScene(SceneManager sceneManager, GameFrame gameFrame) {
         super(sceneManager);
         this.gameFrame = gameFrame;
@@ -71,8 +72,10 @@ public class GameScene extends Scene {
         gameOver = flag;
     }
     public static void setGameOverText(String player){
-        gameOverText.setText(player);
-        gameOverText.setVisible(true);
+        if(!gameOver) {
+            gameOverText.setText(player);
+            gameOverText.setVisible(true);
+        }
     }
 
     private void setInputListeners() {
@@ -106,6 +109,10 @@ public class GameScene extends Scene {
                 }
             }
         });
+    }
+
+    public static boolean isGameOver() {
+        return gameOver;
     }
 
     private void setStepActions(){
